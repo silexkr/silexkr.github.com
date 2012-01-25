@@ -9,18 +9,17 @@ categories: octopress
 
 # octopress 에서 어떻게 글을 쓸 것인가? #
 
-## ruby 및 의존모듈 설치 ##
+## ruby install ##
 
     $ rvm install 1.9.2 && rvm --default use 1.9.2
     $ gem install bundler
-    $ bundle install
 
 rvm 은 ruby 의 [perlbrew](http://perlbrew.pl/) 고요,
 bundler는
 [Carton](http://search.cpan.org/~miyagawa/carton-v0.9.3/lib/Carton.pod)
 입니다.
 
-## git clone ##
+## git clone && bundle install ##
 
 저장소의 remote 정보는 아래와 같습니다.
 
@@ -33,6 +32,10 @@ bundler는
 살렉스 여러분은 write 권한이 있습니다. clone 받으세여.
 
     $ git clone git@github.com:silexkr/silexkr.github.com.git
+
+그리고 의존모듈을 설치 합니다.
+
+    $ bundle install
 
 ## rake new_post ##
 
