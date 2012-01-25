@@ -38,6 +38,10 @@ bundler는
     $ cd silexkr.github.com.git/
     $ bundle install
 
+글을 쓰기 위해선 `source` 브랜치를 사용합니다.
+
+    $ git checkout source
+
 ## rake new_post ##
 
 새글을 쓰기 위해선 직접 파일을 맨들어줘도 되지만 rake 유틸리티를
