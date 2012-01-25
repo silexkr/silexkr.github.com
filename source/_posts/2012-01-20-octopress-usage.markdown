@@ -35,6 +35,7 @@ bundler는
 
 그리고 의존모듈을 설치 합니다.
 
+    $ cd silexkr.github.com.git/
     $ bundle install
 
 ## rake new_post ##
