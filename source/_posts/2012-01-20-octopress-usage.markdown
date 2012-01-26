@@ -33,14 +33,11 @@ bundler는
 
     $ git clone git@github.com:silexkr/silexkr.github.com.git
 
-그리고 의존모듈을 설치 합니다.
+그리고 의존모듈을 설치 합니다. && 글을 쓰기 위해선 `source` 브랜치를 사용합니다.
 
     $ cd silexkr.github.com.git/
-    $ bundle install
-
-글을 쓰기 위해선 `source` 브랜치를 사용합니다.
-
     $ git checkout source
+    $ bundle install
 
 ## rake new_post ##
 
