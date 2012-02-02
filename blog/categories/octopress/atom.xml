@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: octopress | Silex Blog]]></title>
+  <link href="http://silexkr.github.com/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://silexkr.github.com/"/>
+  <updated>2012-02-02T10:01:51+09:00</updated>
+  <id>http://silexkr.github.com/</id>
+  <author>
+    <name><![CDATA[Silex]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress usage]]></title>
+    <link href="http://silexkr.github.com/blog/2012/01/20/octopress-usage/"/>
+    <updated>2012-01-20T01:44:00+09:00</updated>
+    <id>http://silexkr.github.com/blog/2012/01/20/octopress-usage</id>
+    <content type="html"><![CDATA[<h1>octopress 에서 어떻게 글을 쓸 것인가?</h1>
+
+<h2>ruby install</h2>
+
+<pre><code>$ rvm install 1.9.2 &amp;&amp; rvm --default use 1.9.2
+$ gem install bundler
+</code></pre>
+
+<p>rvm 은 ruby 의 <a href="http://perlbrew.pl/">perlbrew</a> 고요,
+bundler는
+<a href="http://search.cpan.org/~miyagawa/carton-v0.9.3/lib/Carton.pod">Carton</a>
+입니다.</p>
+
+<h2>git clone &amp;&amp; bundle install</h2>
+
+<p>저장소의 remote 정보는 아래와 같습니다.</p>
+
+<pre><code>$ git remote -v
+octopress   git://github.com/imathis/octopress.git (fetch)
+octopress   git://github.com/imathis/octopress.git (push)
+origin  git@github.com:silexkr/silexkr.github.com.git (fetch)
+origin  git@github.com:silexkr/silexkr.github.com.git (push)
+</code></pre>
+
+<p>살렉스 여러분은 write 권한이 있습니다. clone 받으세여.</p>
+
+<pre><code>$ git clone git@github.com:silexkr/silexkr.github.com.git
+</code></pre>
+
+<p>그리고 의존모듈을 설치 합니다. &amp;&amp; 글을 쓰기 위해선 <code>source</code> 브랜치를 사용합니다.</p>
+
+<pre><code>$ cd silexkr.github.com.git/
+$ git checkout source
+$ bundle install
+</code></pre>
+
+<h2>rake setup_github_pages</h2>
+
+<p>write 할 수 있는 repository 주소를 octopress 에 등록해줘야 합니다.</p>
+
+<pre><code>$ rake setup_github_pages
+Enter the read/write url for your repository: git@github.com:silexkr/silexkr.github.com.git
+</code></pre>
+
+<h2>rake new_post</h2>
+
+<p>새글을 쓰기 위해선 직접 파일을 맨들어줘도 되지만 rake 유틸리티를
+이용하세요. 편합니다. 요렇게요.</p>
+
+<pre><code>$ rake new_post["Octopress usage"]
+mkdir -p source/_posts
+Creating new post: source/_posts/2012-01-20-octopress-usage.markdown
+</code></pre>
+
+<p><code>Octopress usage</code> 가 제목이고요,
+<code>source/_posts/2012-01-20-octopress-usage.markdown</code> 파일이
+만들어졌습니다.</p>
+
+<h2>메타정보입력</h2>
+
+<p><code>source/_posts/2012-01-20-octopress-usage.markdown</code> 파일을 열어보면 젤
+위에 요렇게 나옵니다.</p>
+
+<pre><code>---
+layout: post
+title: "Octopress usage"
+date: 2012-01-20 01:44
+comments: true
+categories:
+---
+</code></pre>
+
+<p>저희는 여러명이서 쓸것이기 때문에 <code>author</code> 정보도 입력하면 좋습니다.
+default 는 <strong>Silex</strong> 입니다.</p>
+
+<p>카테고리는 여러개를 입력할 수
+있습니다. <a href="http://octopress.org/docs/blogging/">Blogging Basics</a> 에
+좋은 예가 있습니다.</p>
+
+<p>```</p>
+
+<h1>One category</h1>
+
+<p>categories: Sass</p>
+
+<h1>Multiple categories example 1</h1>
+
+<p>categories: [CSS3, Sass, Media Queries]</p>
+
+<h1>Multiple categories example 2</h1>
+
+<p>categories:
+- CSS3
+- Sass
+- Media Queries
+```</p>
+
+<p>저는 이글을 쓰면서 요렇게 했습니다.</p>
+
+<pre><code>---
+author: 홍형석
+layout: post
+title: "Octopress usage"
+date: 2012-01-20 01:44
+comments: true
+categories: octopress
+---
+</code></pre>
+
+<h2>글작성</h2>
+
+<p>markdown 문법을 따릅니다.
+<a href="http://octopress.org/docs/blogging/plugins/">Plugins</a>를 활용해서
+이미지도 옇고 코드도 옇습니다.</p>
+
+<h2>local 에서 확인</h2>
+
+<pre><code>$ rake preview
+Starting to watch source with Jekyll and Compass. Starting Rack on port 4000
+~~~ 중략 ~~~
+&gt;&gt;&gt; Compass is polling for changes. Press Ctrl-C to Stop.
+</code></pre>
+
+<p>문서보면 <code>rake watch</code> 도 있는데여, <code>scss</code>, <code>css</code> 건드릴거 아니면
+안띄워줘도 됩니다.</p>
+
+<h2>rake deploy</h2>
+
+<p>로컬에서 확인이 완료 되었으면, deploy 합니다.</p>
+
+<pre><code>$ rake deploy
+</code></pre>
+
+<p>github 에서 성공메세지를 받으면 <a href="http://silexkr.github.com/">silexkr.github.com</a> 에서 바로
+확인할 수 있습니다.(대부분 바로 반영되더라고요)</p>
+
+<h2>git add, commit, push</h2>
+
+<p>deploy 와는 별도로 원본글을 커밋하고 이력을 관리합니다.</p>
+
+<pre><code>$ git add .
+$ git commit -m "posting Octopress usage"
+$ git push origin source
+</code></pre>
+
+<p><em>주의</em>할게 있는데요. <code>master</code> 브랜치가 아니라 <code>source</code> 로 push 해야
+ 합니다.</p>
+
+<p><code>master</code>는 원본이 변환된 static 파일들이 모여 서비스 되는 브랜치고요,
+<code>source</code>에서 원본을 관리합니다.</p>
+
+<p>생각해보니까 <code>master</code>는 어차피 deploy 할때 HEAD 라서 그냥 push 해도
+되겠군여.</p>
+
+<h1>이제 뭘 하징?</h1>
+
+<p>네 글을 써주세요.</p>
+
+<h1>See also</h1>
+
+<ul>
+<li><a href="http://octopress.org/docs/blogging/">Blogging Basics</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

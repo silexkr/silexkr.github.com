@@ -1,145 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Silex Blog</title>
-  <meta name="author" content="Silex">
-
-  
-  <meta name="description" content=" 오늘 있었던 Silex Techtalk 을 Storify 로 정리해보았습니다. [View the story &#8220;Silex Techtalk 02/01 - 2012&#8221; on Storify]
-">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://silexkr.github.com">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="Silex Blog" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">Silex Blog</a></h1>
-  
-    <h2>What the silex.</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:silexkr.github.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[Silex Blog]]></title>
+  <link href="http://silexkr.github.com/atom.xml" rel="self"/>
+  <link href="http://silexkr.github.com/"/>
+  <updated>2012-02-02T10:01:51+09:00</updated>
+  <id>http://silexkr.github.com/</id>
+  <author>
+    <name><![CDATA[Silex]]></name>
     
-      <h1 class="entry-title"><a href="/blog/2012/02/01/silex-techtalk-02-01-2012/">Silex Techtalk - 02/01 - 2012</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2012-02-01T17:41:00+09:00" pubdate data-updated="true">Feb 1<span>st</span>, 2012</time>
-        
-         | <a href="/blog/2012/02/01/silex-techtalk-02-01-2012/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>  오늘 있었던 Silex Techtalk 을 Storify 로 정리해보았습니다.</p>
+  <entry>
+    <title type="html"><![CDATA[Silex Techtalk - 02/01 - 2012]]></title>
+    <link href="http://silexkr.github.com/blog/2012/02/01/silex-techtalk-02-01-2012/"/>
+    <updated>2012-02-01T17:41:00+09:00</updated>
+    <id>http://silexkr.github.com/blog/2012/02/01/silex-techtalk-02-01-2012</id>
+    <content type="html"><![CDATA[<p>  오늘 있었던 Silex Techtalk 을 Storify 로 정리해보았습니다.</p>
 
 <script src="http://storify.com/jeen_lee/silex-techtalk-1.js"></script>
 
 
 <p><noscript>[<a href="http://storify.com/jeen_lee/silex-techtalk-1" target="_blank">View the story &#8220;Silex Techtalk 02/01 - 2012&#8221; on Storify</a>]</noscript></p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/20/jquery-note-plugin/">Jquery Note Plugin</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-20T19:23:00+09:00" pubdate data-updated="true">Jan 20<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/01/20/jquery-note-plugin/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="https://lh5.googleusercontent.com/-0TusrT1pxqA/Txk9pS0yFcI/AAAAAAAAABQ/AuhNXWl4ZrA/jquey.note.png" alt="jquery note preview" /></p>
+  <entry>
+    <title type="html"><![CDATA[jquery note plugin]]></title>
+    <link href="http://silexkr.github.com/blog/2012/01/20/jquery-note-plugin/"/>
+    <updated>2012-01-20T19:23:00+09:00</updated>
+    <id>http://silexkr.github.com/blog/2012/01/20/jquery-note-plugin</id>
+    <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-0TusrT1pxqA/Txk9pS0yFcI/AAAAAAAAABQ/AuhNXWl4ZrA/jquey.note.png" alt="jquery note preview" /></p>
 
 <p><a href="http://aanoaa.github.com/jquery-note/">demo</a></p>
 
@@ -257,44 +150,15 @@ ajax 로 데이터를 주고 받아서 서버에 기록을 남길 수도 있습�
 있습니다. 제가 영어가 딸려서 미국사람한테는 그런부탁 못하거든요.</p>
 
 <p>정말 글 못쓰네요.. 어렵고요 아아아아.. 쓰다보면 나아지겟죠.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/20/octopress-usage/">Octopress Usage</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-20T01:44:00+09:00" pubdate data-updated="true">Jan 20<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/01/20/octopress-usage/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1>octopress 에서 어떻게 글을 쓸 것인가?</h1>
+  <entry>
+    <title type="html"><![CDATA[Octopress usage]]></title>
+    <link href="http://silexkr.github.com/blog/2012/01/20/octopress-usage/"/>
+    <updated>2012-01-20T01:44:00+09:00</updated>
+    <id>http://silexkr.github.com/blog/2012/01/20/octopress-usage</id>
+    <content type="html"><![CDATA[<h1>octopress 에서 어떻게 글을 쓸 것인가?</h1>
 
 <h2>ruby install</h2>
 
@@ -464,44 +328,15 @@ $ git push origin source
 <li><a href="http://octopress.org/docs/blogging/">Blogging Basics</a></li>
 </ul>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/19/hello-world/">Hello World</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-19T17:39:00+09:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/01/19/hello-world/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1>소개</h1>
+  <entry>
+    <title type="html"><![CDATA[hello world]]></title>
+    <link href="http://silexkr.github.com/blog/2012/01/19/hello-world/"/>
+    <updated>2012-01-19T17:39:00+09:00</updated>
+    <id>http://silexkr.github.com/blog/2012/01/19/hello-world</id>
+    <content type="html"><![CDATA[<h1>소개</h1>
 
 <p>건대입구에서 소프트웨어 장사하는 Silex(일명 용키)입니다.</p>
 
@@ -545,103 +380,7 @@ emacs 쓰고요, 띵크패드에 우분투 씁니다.</li>
 <p><a href="http://www.facebook.com/silexkr">silexkr - facebook</a></p>
 
 <p><img src="https://lh4.googleusercontent.com/-luyngRUk4Dg/TxfuqnNyyYI/AAAAAAAAABI/2VkyXnMdG74/s400/silex_except_aanoaa.jpg" alt="we are silex" /></p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2012/02/01/silex-techtalk-02-01-2012/">Silex Techtalk - 02/01 - 2012</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/01/20/jquery-note-plugin/">jquery note plugin</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/01/20/octopress-usage/">Octopress usage</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/01/19/hello-world/">hello world</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Silex -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'silexblog';
-      
-        
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
-</html>
+</feed>

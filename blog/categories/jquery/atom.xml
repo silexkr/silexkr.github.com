@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jquery | Silex Blog]]></title>
+  <link href="http://silexkr.github.com/blog/categories/jquery/atom.xml" rel="self"/>
+  <link href="http://silexkr.github.com/"/>
+  <updated>2012-02-02T10:01:51+09:00</updated>
+  <id>http://silexkr.github.com/</id>
+  <author>
+    <name><![CDATA[Silex]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[jquery note plugin]]></title>
+    <link href="http://silexkr.github.com/blog/2012/01/20/jquery-note-plugin/"/>
+    <updated>2012-01-20T19:23:00+09:00</updated>
+    <id>http://silexkr.github.com/blog/2012/01/20/jquery-note-plugin</id>
+    <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-0TusrT1pxqA/Txk9pS0yFcI/AAAAAAAAABQ/AuhNXWl4ZrA/jquey.note.png" alt="jquery note preview" /></p>
+
+<p><a href="http://aanoaa.github.com/jquery-note/">demo</a></p>
+
+<h1>jquery.note</h1>
+
+<h2>what the..</h2>
+
+<p>메모장입니다.
+상태를 저장할 수 있고요.
+상태에 따른 hook 이 많아서 유연하게 사용할 수 있고요.
+ajax 로 데이터를 주고 받아서 서버에 기록을 남길 수도 있습니다.
+회사에서 필요해서 맨들었습니다.
+여기저기 찾아봤는데 꼭 바라는게 없더라고요.</p>
+
+<h2>사용법</h2>
+
+<p>html 안에서 css, 랑 js 를 include 해주고요
+<code>$(document).ready</code> 안에 슥슥해주면 됩니다.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>[jquery.note] [] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;css/jquery.note.css&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;screen&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;script/jquery-1.6.2.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;script/jquery.note.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a[title=note]&quot;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">note</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><a href="http://coffeescript.org/">coffeescript</a> 로 작성했고요, css 는
+<a href="http://sass-lang.com/">scss</a> 로 작성했습니다.</p>
+
+<h2>Hooks</h2>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>[jquery.note hook example] [] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;afterReveal.note&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">opts</span><span class="p">.</span><span class="nx">notes</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/path/to&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">data</span><span class="p">.</span><span class="nx">opts</span><span class="p">.</span><span class="nx">notes</span> <span class="o">=</span> <span class="nx">res</span><span class="p">;</span>
+</span><span class='line'>    <span class="c1">// res 는 아래처럼 구성됩니다.</span>
+</span><span class='line'>    <span class="c1">// [{&quot;who&quot;:&quot;hshong&quot;,&quot;date&quot;:&quot;2012-01-20 19:23&quot;,&quot;status&quot;:&quot;open&quot;},{&quot;who&quot;:&quot;aanoaa&quot;,&quot;date&quot;:&quot;2012-01-20 19:25&quot;,&quot;note&quot;:&quot;다시하렴 처음부터&quot;}]</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">opts</span><span class="p">.</span><span class="nx">notes</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">owner</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>notes가 보여질때 갯수를 확인한다음에, 0개라면 서버로 질의해서 노트와,
+상태정보를 받아와서 업데이트 해주고 reloading 합니다.</p>
+
+<p>옵션에 따라 달리 동작할 수 있는데, 실제로 쓸거 아니면 알 필요
+없습니다.</p>
+
+<p>사용가능한 hook 은 아래와 같습니다.</p>
+
+<ul>
+<li><code>init.note</code> 초기화할때</li>
+<li><code>afterClose.note</code> 닫히자마자</li>
+<li><code>beforeSend.note</code> ajax 보내기전에</li>
+<li><code>afterSuccess.note</code> ajax 성공하자마자</li>
+<li><code>beforeReveal.note</code> 보여지기바로전에</li>
+<li><code>afterReveal.note</code> 보여지자마자</li>
+<li><code>changeStatus.note</code> open에서 close 되는것처럼 상태가 변경되고 나면</li>
+</ul>
+
+
+<h1>See also</h1>
+
+<ul>
+<li><a href="https://github.com/aanoaa/jquery-note">jquery-note on github</a></li>
+</ul>
+
+
+<h1>마무리</h1>
+
+<p>jquery plugin 을 만들고자 하는 분이라면 한번 스윽 보셔도 괜찮을 것
+같습니다.</p>
+
+<p>javascript 잘하시는 어떤분이 제 코드를 보고 좀 까줬으면 하는 바람도
+있습니다. 제가 영어가 딸려서 미국사람한테는 그런부탁 못하거든요.</p>
+
+<p>정말 글 못쓰네요.. 어렵고요 아아아아.. 쓰다보면 나아지겟죠.</p>
+]]></content>
+  </entry>
+  
+</feed>
