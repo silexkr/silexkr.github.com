@@ -39,6 +39,13 @@ bundler는
     $ git checkout source
     $ bundle install
 
+## rake setup_github_pages
+
+write 할 수 있는 repository 주소를 octopress 에 등록해줘야 합니다.
+
+    $ rake setup_github_pages
+    Enter the read/write url for your repository: git@github.com:silexkr/silexkr.github.com.git
+
 ## rake new_post ##
 
 새글을 쓰기 위해선 직접 파일을 맨들어줘도 되지만 rake 유틸리티를
