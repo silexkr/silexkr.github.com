@@ -33,14 +33,18 @@ bundler는
 
     $ git clone git@github.com:silexkr/silexkr.github.com.git
 
-그리고 의존모듈을 설치 합니다.
+그리고 의존모듈을 설치 합니다. && 글을 쓰기 위해선 `source` 브랜치를 사용합니다.
 
     $ cd silexkr.github.com.git/
+    $ git checkout source
     $ bundle install
 
-글을 쓰기 위해선 `source` 브랜치를 사용합니다.
+## rake setup_github_pages
 
-    $ git checkout source
+write 할 수 있는 repository 주소를 octopress 에 등록해줘야 합니다.
+
+    $ rake setup_github_pages
+    Enter the read/write url for your repository: git@github.com:silexkr/silexkr.github.com.git
 
 ## rake new_post ##
 
