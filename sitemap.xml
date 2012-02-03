@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>http://silexkr.github.com/blog/2012/01/19/hello-world/</loc>
+        <lastmod>2012-02-02T09:56:53+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://silexkr.github.com/blog/2012/01/20/octopress-usage/</loc>
+        <lastmod>2012-02-02T10:01:42+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://silexkr.github.com/blog/2012/01/20/jquery-note-plugin/</loc>
+        <lastmod>2012-02-02T09:56:53+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://silexkr.github.com/blog/2012/02/01/silex-techtalk-02-01-2012/</loc>
+        <lastmod>2012-02-02T09:56:53+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://silexkr.github.com/</loc>
+        <lastmod>2012-02-02T10:01:42+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://silexkr.github.com/blog/archives/</loc>
+        <lastmod>2012-02-02T10:01:42+09:00</lastmod>
+    </url>
+</urlset>

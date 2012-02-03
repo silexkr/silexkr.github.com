@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Octopress usage - Silex Blog</title>
+  <meta name="author" content="Silex">
+
+  
+  <meta name="description" content="octopress 에서 어떻게 글을 쓸 것인가? ruby install $ rvm install 1.9.2 &amp;&amp; rvm --default use 1.9.2
+$ gem install bundler rvm 은 ruby 의 perlbrew 고요, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://silexkr.github.com/blog/2012/01/20/octopress-usage">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Silex Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Silex Blog</a></h1>
+  
+    <h2>What the silex.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:silexkr.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Octopress Usage</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-20T01:44:00+09:00" pubdate data-updated="true">Jan 20<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h1>octopress 에서 어떻게 글을 쓸 것인가?</h1>
+
+<h2>ruby install</h2>
+
+<pre><code>$ rvm install 1.9.2 &amp;&amp; rvm --default use 1.9.2
+$ gem install bundler
+</code></pre>
+
+<p>rvm 은 ruby 의 <a href="http://perlbrew.pl/">perlbrew</a> 고요,
+bundler는
+<a href="http://search.cpan.org/~miyagawa/carton-v0.9.3/lib/Carton.pod">Carton</a>
+입니다.</p>
+
+<h2>git clone &amp;&amp; bundle install</h2>
+
+<p>저장소의 remote 정보는 아래와 같습니다.</p>
+
+<pre><code>$ git remote -v
+octopress   git://github.com/imathis/octopress.git (fetch)
+octopress   git://github.com/imathis/octopress.git (push)
+origin  git@github.com:silexkr/silexkr.github.com.git (fetch)
+origin  git@github.com:silexkr/silexkr.github.com.git (push)
+</code></pre>
+
+<p>살렉스 여러분은 write 권한이 있습니다. clone 받으세여.</p>
+
+<pre><code>$ git clone git@github.com:silexkr/silexkr.github.com.git
+</code></pre>
+
+<p>그리고 의존모듈을 설치 합니다. &amp;&amp; 글을 쓰기 위해선 <code>source</code> 브랜치를 사용합니다.</p>
+
+<pre><code>$ cd silexkr.github.com.git/
+$ git checkout source
+$ bundle install
+</code></pre>
+
+<h2>rake setup_github_pages</h2>
+
+<p>write 할 수 있는 repository 주소를 octopress 에 등록해줘야 합니다.</p>
+
+<pre><code>$ rake setup_github_pages
+Enter the read/write url for your repository: git@github.com:silexkr/silexkr.github.com.git
+</code></pre>
+
+<h2>rake new_post</h2>
+
+<p>새글을 쓰기 위해선 직접 파일을 맨들어줘도 되지만 rake 유틸리티를
+이용하세요. 편합니다. 요렇게요.</p>
+
+<pre><code>$ rake new_post["Octopress usage"]
+mkdir -p source/_posts
+Creating new post: source/_posts/2012-01-20-octopress-usage.markdown
+</code></pre>
+
+<p><code>Octopress usage</code> 가 제목이고요,
+<code>source/_posts/2012-01-20-octopress-usage.markdown</code> 파일이
+만들어졌습니다.</p>
+
+<h2>메타정보입력</h2>
+
+<p><code>source/_posts/2012-01-20-octopress-usage.markdown</code> 파일을 열어보면 젤
+위에 요렇게 나옵니다.</p>
+
+<pre><code>---
+layout: post
+title: "Octopress usage"
+date: 2012-01-20 01:44
+comments: true
+categories:
+---
+</code></pre>
+
+<p>저희는 여러명이서 쓸것이기 때문에 <code>author</code> 정보도 입력하면 좋습니다.
+default 는 <strong>Silex</strong> 입니다.</p>
+
+<p>카테고리는 여러개를 입력할 수
+있습니다. <a href="http://octopress.org/docs/blogging/">Blogging Basics</a> 에
+좋은 예가 있습니다.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># One category
+</span><span class='line'>categories: Sass
+</span><span class='line'>
+</span><span class='line'># Multiple categories example 1
+</span><span class='line'>categories: [CSS3, Sass, Media Queries]
+</span><span class='line'>
+</span><span class='line'># Multiple categories example 2
+</span><span class='line'>categories:
+</span><span class='line'>- CSS3
+</span><span class='line'>- Sass
+</span><span class='line'>- Media Queries</span></code></pre></td></tr></table></div></figure>
+
+
+<p>저는 이글을 쓰면서 요렇게 했습니다.</p>
+
+<pre><code>---
+author: 홍형석
+layout: post
+title: "Octopress usage"
+date: 2012-01-20 01:44
+comments: true
+categories: octopress
+---
+</code></pre>
+
+<h2>글작성</h2>
+
+<p>markdown 문법을 따릅니다.
+<a href="http://octopress.org/docs/blogging/plugins/">Plugins</a>를 활용해서
+이미지도 옇고 코드도 옇습니다.</p>
+
+<h2>local 에서 확인</h2>
+
+<pre><code>$ rake preview
+Starting to watch source with Jekyll and Compass. Starting Rack on port 4000
+~~~ 중략 ~~~
+&gt;&gt;&gt; Compass is polling for changes. Press Ctrl-C to Stop.
+</code></pre>
+
+<p>문서보면 <code>rake watch</code> 도 있는데여, <code>scss</code>, <code>css</code> 건드릴거 아니면
+안띄워줘도 됩니다.</p>
+
+<h2>rake deploy</h2>
+
+<p>로컬에서 확인이 완료 되었으면, deploy 합니다.</p>
+
+<pre><code>$ rake deploy
+</code></pre>
+
+<p>github 에서 성공메세지를 받으면 <a href="http://silexkr.github.com/">silexkr.github.com</a> 에서 바로
+확인할 수 있습니다.(대부분 바로 반영되더라고요)</p>
+
+<h2>git add, commit, push</h2>
+
+<p>deploy 와는 별도로 원본글을 커밋하고 이력을 관리합니다.</p>
+
+<pre><code>$ git add .
+$ git commit -m "posting Octopress usage"
+$ git push origin source
+</code></pre>
+
+<p><em>주의</em>할게 있는데요. <code>master</code> 브랜치가 아니라 <code>source</code> 로 push 해야
+ 합니다.</p>
+
+<p><code>master</code>는 원본이 변환된 static 파일들이 모여 서비스 되는 브랜치고요,
+<code>source</code>에서 원본을 관리합니다.</p>
+
+<p>생각해보니까 <code>master</code>는 어차피 deploy 할때 HEAD 라서 그냥 push 해도
+되겠군여.</p>
+
+<h1>이제 뭘 하징?</h1>
+
+<p>네 글을 써주세요.</p>
+
+<h1>See also</h1>
+
+<ul>
+<li><a href="http://octopress.org/docs/blogging/">Blogging Basics</a></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">홍형석</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-20T01:44:00+09:00" pubdate data-updated="true">Jan 20<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>octopress</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://silexkr.github.com/blog/2012/01/20/octopress-usage/" data-via="" data-counturl="http://silexkr.github.com/blog/2012/01/20/octopress-usage/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/01/19/hello-world/" title="Previous Post: hello world">&laquo; hello world</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/01/20/jquery-note-plugin/" title="next Post: jquery note plugin">jquery note plugin &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/02/01/silex-techtalk-02-01-2012/">Silex Techtalk - 02/01 - 2012</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/20/jquery-note-plugin/">jquery note plugin</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/20/octopress-usage/">Octopress usage</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/19/hello-world/">hello world</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Silex -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'silexblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://silexkr.github.com/blog/2012/01/20/octopress-usage/';
+        var disqus_url = 'http://silexkr.github.com/blog/2012/01/20/octopress-usage/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
