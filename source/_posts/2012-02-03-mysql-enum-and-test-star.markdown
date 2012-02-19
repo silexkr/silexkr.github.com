@@ -2,7 +2,7 @@
 layout: post
 title: "Mysql ENUM and Test::*"
 date: 2012-02-03 19:06
-author:yongbin
+author: "@yongbin"
 comments: true
 categories: [mysql, test]
 ---
@@ -104,8 +104,8 @@ Perl test code
 실수를 회피하도록 코드를 작성하는데도 많은 어려움이 있었기 때문에 따로 시간을 내서
 발생하는 현상에 대해 재현할 수 있는 코드를 작성했습니다.
 
-코드에는 평소에 제가 즐겨쓰는 몇가지 모듈이 사용됩니다. [Test::Most][test-most], [DBIx::Simple][dbix-simple],
-[SQL::Abstract][sql-abstract], [Test::DatabaseRow][test-databaserow]
+코드에는 평소에 제가 즐겨쓰는 몇가지 모듈이 사용됩니다. [Test::Most](http://metacpan.org/module/Test::Most), [DBIx::Simple](http://metacpan.org/module/DBIx::Simple),
+[SQL::Abstract](http://metacpan.org/module/SQL::Abstract), [Test::DatabaseRow](http://metacpan.org/module/Test::Databaserow)
 
  * Test::Most는 Test::More와 이름이 거의 흡사하지만 자주 사용하는 Test::Differences,Test::Deep,Test::Exception 등을
    같이 불러주기 때문에 습관적으로 사용합니다.
@@ -114,7 +114,7 @@ Perl test code
    하면서 많이 사용하게 되었습니다.
  * 테스트 코드를 작성할 때 반복사용되는 부분은 최대한 함수로 분리를 하고 실제 검증이 들어가는 부분은
    가능하면 block({,})으로 scope를 분리시키면 비슷한 시도의 검증코드를 다수 만들때 복사해서 붙이기 용이합니다.
-   ( "특히 subtest를 사용하면 test를 개념적으로 분리할 수 있어 더욱 좋다" by @JEEN )
+   ( "특히 subtest를 사용하면 test를 개념적으로 분리할 수 있어 더욱 좋다" by @JEEN_LEE )
 
 Code
 ----
