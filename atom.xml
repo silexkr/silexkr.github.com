@@ -4,7 +4,7 @@
   <title><![CDATA[Silex Blog]]></title>
   <link href="http://silexkr.github.com/atom.xml" rel="self"/>
   <link href="http://silexkr.github.com/"/>
-  <updated>2012-02-02T10:01:51+09:00</updated>
+  <updated>2012-02-20T22:32:03+09:00</updated>
   <id>http://silexkr.github.com/</id>
   <author>
     <name><![CDATA[Silex]]></name>
@@ -12,6 +12,894 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Guest Speech #1 - G사 S님]]></title>
+    <link href="http://silexkr.github.com/blog/2012/02/19/guest-speech-number-1/"/>
+    <updated>2012-02-19T16:55:00+09:00</updated>
+    <id>http://silexkr.github.com/blog/2012/02/19/guest-speech-number-1</id>
+    <content type="html"><![CDATA[<p>  지난 13일 CEO @y0gnbin 의 지인인 G 사 S모님을 초청해서 <code>서버 가상화</code>에 대한 이런 저런 얘기를 들을 수 있었습니다.</p>
+
+<p>  실제로 CentOS 5.7 에 기본으로 세팅된 환경 아래에서 실제로 Dom-U 를 만드는 과정과 주의점 등등에 대한 이야기가 주를 이뤘습니다.</p>
+
+<p>  물론 그 뒤에는 단순히 Xen 환경 구축에 관한 이야기 뿐만 아니라, G 사에 Xen 을 도입한 이야기, 그리고 G 사에서 오픈소스를 본격적으로 채용함으로 얻은 이런저런 메리트. 그리고 작은 회사에서는 감히 엄두도 못 낼 장비 스펙과 비용, 많은 성공사례와 오픈소스 도입에 이르기까지의 계측된 데이터와 검증 방법&#8230;</p>
+
+<p>  또한 서버구입시에 참고할 만한 스펙비교 방법도 전수받게 되었습니다.</p>
+
+<ul>
+<li><a href="http://www.spec.org/">http://www.spec.org/</a></li>
+</ul>
+
+
+<p>  아무튼 이런저런 돈주고도 쉽게 못 들을 이런저런 얘기는 장소를 바꿔가며 새벽 2시까지 이어갔고, 그때가 되어서야 해산을 했습니다.</p>
+
+<p>  <blockquote class="twitter-tweet"><p>Silex 외부연사 초청 강연회 준비&#8230; w/ @<a href="https://twitter.com/luzluna">luzluna</a> @<a href="https://twitter.com/keedi">keedi</a> @<a href="https://twitter.com/y0ngbin">y0ngbin</a> @<a href="https://twitter.com/rumidier">rumidier</a></p>&mdash; JEEN (@JEEN_LEE) <a href="https://twitter.com/JEEN_LEE/status/169021093208788992" data-datetime="2012-02-13T11:32:23+00:00">February 13, 2012</a></blockquote></p>
+
+<blockquote class="twitter-tweet"><p>silex 외부연사 초청강연 및 간담회 끝</p>&mdash; JEEN (@JEEN_LEE) <a href="https://twitter.com/JEEN_LEE/status/169082207439298563" data-datetime="2012-02-13T15:35:14+00:00">February 13, 2012</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet"><p>w/ @<a href="https://twitter.com/luzluna">luzluna</a> @<a href="https://twitter.com/keedi">keedi</a> @<a href="https://twitter.com/y0ngbin">y0ngbin</a> shs님 (@ Caffé bene) [pic]: <a href="http://t.co/vla9d6P2" title="http://4sq.com/xYJMn7">4sq.com/xYJMn7</a></p>&mdash; JEEN (@JEEN_LEE) <a href="https://twitter.com/JEEN_LEE/status/169085458905702402" data-datetime="2012-02-13T15:48:09+00:00">February 13, 2012</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet"><p>간담회 2차끝. 귀가</p>&mdash; JEEN (@JEEN_LEE) <a href="https://twitter.com/JEEN_LEE/status/169104418652946432" data-datetime="2012-02-13T17:03:29+00:00">February 13, 2012</a></blockquote>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[backbone.js]]></title>
+    <link href="http://silexkr.github.com/blog/2012/02/17/backbone-dot-js/"/>
+    <updated>2012-02-17T19:39:00+09:00</updated>
+    <id>http://silexkr.github.com/blog/2012/02/17/backbone-dot-js</id>
+    <content type="html"><![CDATA[<h2>배경</h2>
+
+<p>아 <a href="http://documentcloud.github.com/backbone/">backbone.js</a> 가 만들어진 배경이 아니라, 제가 사용하게 된
+배경입니다. 회사에서 진행하는 <code>javascript</code> 를 나름 무겁게 사용하는
+프로젝트가 있습니다. &#8220;갑&#8221;님의 요구사항이 날이 갈수록 복잡해 짐에 따라
+<code>jquery</code> 플러그인도 맨들고, <code>require.js</code> 를 사용해서 파일을 조직화해서
+사용하고 있었습니다만 <code>$.ajax</code> 에 대한 callback 이 늘어남에 따라 점점
+코드의 복잡도가 증가해서 해결해야 될 문제라고 생각했습니다.</p>
+
+<p><a href="https://trello.com/">Trello</a> 에서
+<a href="http://blog.fogcreek.com/the-trello-tech-stack/">The Trello Tech Stack</a>
+<a href="http://documentcloud.github.com/backbone/">backbone.js</a>를 쓴다는 글을 보고 사용방법을 좀
+알아보았습니다.</p>
+
+<p><img src="http://blog.fogcreek.com/wp-content/uploads/2012/01/trello-freehand.jpg" alt="Trello Early Architecture Drawing" /></p>
+
+<h2>자세한 설명은 (몰라서)생략</h2>
+
+<p>왜 쓰는지 뭔가 좋은지 그런거 모릅니다. 여기서는 어떻게 사용하는지만
+다룹니다. 검색 ㄱㄱ</p>
+
+<p><img src="https://lh5.googleusercontent.com/-i82V0GanZr4/T0IfDIDWq6I/AAAAAAAAABY/VnAii_7ds5E/no_more_details.jpg" alt="자세한 설명은 생략한다" /></p>
+
+<h2>맨든사람</h2>
+
+<p><a href="https://twitter.com/#!/jashkenas">Jeremy Ashkenas - Twitter</a>,
+<a href="https://github.com/jashkenas/">Jeremy Ashkenas - Github</a></p>
+
+<p>요즘 가장 인기있는 코딩왕이 아닐까 합니다.</p>
+
+<ul>
+<li><a href="http://coffeescript.org/">CoffeeScript</a></li>
+<li><a href="http://documentcloud.github.com/underscore/">underscore.js</a></li>
+<li><a href="http://documentcloud.github.com/backbone/">backbone.js</a></li>
+</ul>
+
+
+<p>위에 세개다 저 사람이 맨들었답니다.</p>
+
+<h2>돈워리</h2>
+
+<p><a href="http://documentcloud.github.com/backbone/#examples">http://documentcloud.github.com/backbone/#examples</a></p>
+
+<ul>
+<li>FourSuare</li>
+<li>LinkedIn</li>
+<li>37 Signals</li>
+<li>Trello</li>
+<li>Silex(끼워 넣어 봅니다)</li>
+<li>&#8230;</li>
+</ul>
+
+
+<p>등에서 이미 쓰이고 있다고..</p>
+
+<h2>연습삼아 맨든 프로젝트</h2>
+
+<p>일단 <a href="http://coffeescript.org/">CoffeeScript</a>만세라서
+<a href="http://coffeescript.org/">CoffeeScript</a>로 구현하였습니다.</p>
+
+<p><a href="http://aanoaa.github.com/jquery-note/">jquery-note plugin</a>을 다시
+한번 만들어 봤습니다.</p>
+
+<h3>Server-side</h3>
+
+<p><img src="https://lh5.googleusercontent.com/-_aPZkJJp5LI/T0I_SRERM-I/AAAAAAAAABo/k_WLzmWNs08/s1024/res-res.example.png" alt="server-side" /></p>
+
+<p>RESTful 하게 구현되어야 합니다. <a href="http://documentcloud.github.com/backbone/">backbone.js</a>의 <code>model</code>과
+<code>collection</code>은 url 규약을 가지고 있습니다.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># http://documentcloud.github.com/backbone/#Sync
+</span><span class='line'>The default sync handler maps CRUD to REST like so:
+</span><span class='line'>
+</span><span class='line'>create → POST   /collection
+</span><span class='line'>read → GET   /collection[/id]
+</span><span class='line'>update → PUT   /collection/id
+</span><span class='line'>delete → DELETE   /collection/id</span></code></pre></td></tr></table></div></figure>
+
+
+<p>좀 간단하게 말하면 위에선 언급한 구조의 HTTP method 와 url 규약을
+지키고, 요청 헤더의 <code>Accept</code>에 걸맞는 응답을 줘야 합니다.</p>
+
+<p>서버와 sync 를 하기 위해 <code>model.save()</code> 또는 <code>collection.fetch()</code>를 호출
+하게 되는데 이때, 모든 요청 헤더에 <code>Accept: application/json</code> 을
+포함합니다. 새로운 item 을 만들기 위해 <code>POST</code> 요청을 보낼때도
+마찬가집니다. 이때는 추가로 <code>JSON.stringify(model)</code> 을 POST body 에
+넣고, <code>Content-type: application/json</code> 헤더를 포함합니다.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># part of request header
+</span><span class='line'>Accept    application/json, text/javascript, */*; q=0.01
+</span><span class='line'>Content-Type  application/json; charset=UTF-8
+</span><span class='line'>X-Requested-With  XMLHttpRequest</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># request body
+</span><span class='line'>{"qid":"1","status":"reopen","comment":""}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>server 에서 이런 데이터를 받아서 처리해야 하는(deserialize/serialize)
+자잘함을 피하기 위해 저는
+<a href="http://search.cpan.org/~bobtfish/Catalyst-Action-REST-0.96/lib/Catalyst/Controller/REST.pm">Catalyst::Controller::REST</a> 를
+사용했습니다. 요청/응답 헤더에서 사용가능한 &#8220;Accept&#8221;를 확인하고
+serialize/deserialize 를 자동으로 해주기 때문에 편리합니다.</p>
+
+<h3>Client-side</h3>
+
+<p><img src="https://lh5.googleusercontent.com/--90Nykdhcvc/T0IyuoSwCeI/AAAAAAAAABg/V0Lp1rRzJXE/preview-backbone-note.png" alt="preview" /></p>
+
+<ul>
+<li>상태 및 코멘트를 <code>note</code> 라 하겠습니다.</li>
+<li>위 그림처럼 한화면에 보여지는 <code>note</code>의 집합(또는 컬렉션)을 <code>query</code>
+라 하겠습니다.</li>
+</ul>
+
+
+<p><code>http://example.com/#/query/:id</code> url 을 감지하고 원하는 event 를 발생
+시켜야 합니다. 그러기 위해선 <code>Backbone.Router</code> 를 확장해서 app 전용
+router 를 만들어야 합니다.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nx">MyCollection</span> <span class="k">extends</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Collection</span>
+</span><span class='line'>  <span class="nv">model: </span><span class="nx">MyModel</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nx">MyRouter</span> <span class="k">extends</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Router</span>
+</span><span class='line'>  <span class="nv">routes:</span>
+</span><span class='line'>    <span class="s1">&#39;/query/:id&#39;</span><span class="o">:</span> <span class="s1">&#39;query&#39;</span>
+</span><span class='line'>  <span class="nv">query: </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span>
+</span><span class='line'>    <span class="c1"># do something</span>
+</span><span class='line'>    <span class="nv">coll = </span><span class="k">new</span> <span class="nx">MyCollection</span>
+</span><span class='line'>    <span class="nv">coll.url = </span><span class="s2">&quot;/query/#{id}&quot;</span>
+</span><span class='line'>    <span class="nx">coll</span><span class="p">.</span><span class="nx">fetch</span>
+</span><span class='line'>      <span class="nv">success: </span><span class="nf">(c, res) -&gt;</span>
+</span><span class='line'>        <span class="k">new</span> <span class="nx">MyView</span> <span class="p">{</span> <span class="nv">collection: </span><span class="nx">c</span> <span class="p">}</span>
+</span><span class='line'>      <span class="nv">error: </span><span class="nf">(c, res) -&gt;</span>
+</span><span class='line'>        <span class="c1"># error handling</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>http://example.com/#/query/2</code> 일때, <code>GET /query/2</code> 하고 응답이
+정상이면 <code>MyView</code> 를 만듭니다. view 가 초기화될때, render 를 호출하면
+DOM 이 알맞게 슥슥 바뀌게 됩니다. 일반적으로 <code>collection.models</code> 를
+순회하면서 html element 를 구성하고 특정 #id 에 append 합니다.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">MyView</span> <span class="k">extends</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span>
+</span><span class='line'>  <span class="nv">initialize: </span><span class="o">-&gt;</span>
+</span><span class='line'>    <span class="nx">do</span> <span class="nx">@render</span>
+</span><span class='line'>  <span class="nv">template:</span>
+</span><span class='line'>    <span class="s1">&#39;&#39;&#39;</span>
+</span><span class='line'><span class="s1">       is </span>
+</span><span class='line'><span class="s1">    &#39;&#39;&#39;</span>
+</span><span class='line'>  <span class="nv">render: </span><span class="o">=&gt;</span>
+</span><span class='line'>    <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">@collection</span><span class="p">.</span><span class="nx">models</span><span class="p">,</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span>
+</span><span class='line'>      <span class="c1"># 템플릿을 사용해서 슥슥하면 편리합니다. 예를들어..</span>
+</span><span class='line'>      <span class="nx">html</span> <span class="o">+=</span> <span class="nx">Mustache</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">@template</span><span class="p">,</span> <span class="p">{</span> <span class="nv">foo: </span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="nv">bar: </span><span class="s1">&#39;world&#39;</span> <span class="p">})</span> <span class="c1"># hello is world</span>
+</span><span class='line'>      <span class="c1"># 일반적으론 이렇게는 직접 데이터를 구성하지는 않겟고, item 을 사용하겟죠</span>
+</span><span class='line'>      <span class="nx">@delegateEvents</span><span class="p">()</span> <span class="c1"># event 처리에 대한 꼼순데 생략</span>
+</span><span class='line'>      <span class="err">@</span> <span class="c1"># render 의 마지막에 this 를 return 함으로써 jquery chain 을 사용할 수 있도록 합니다.</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://documentcloud.github.com/backbone/">backbone.js</a> 을 사용한 부분의 코드입니다. 조금
+헷갈리수도 있는게, <a href="http://requirejs.org/">Require.js</a>를 사용해서 <code>define</code>,
+<code>order!</code> 같은 구문이 거슬릴 수도 있습니다만, 바다와 같은 마음으로
+이해해 주세요.</p>
+
+<div><script src='https://gist.github.com/1868873.js?file='></script>
+<noscript><pre><code>require [
+  &quot;jquery&quot;,
+  &quot;routers/root&quot;
+], ($, Router) -&gt;
+  $(document).ready -&gt;
+    new Router
+    Backbone.history.start()
+</code></pre></noscript></div>
+
+
+<h2>결론 및 느낀점</h2>
+
+<ul>
+<li>jquery plugin 으로 작성했을때 보다 복잡성은 줄어들고 코드의 양은 2/3
+정도로 줄어듬</li>
+<li>확장이 용이 해졌음, 더 복잡한 UI 에 대한 자신감 up</li>
+<li>js 가 웹애플리케이션의 일부분이 되어버림</li>
+<li>jquery plugin 과 달리 재사용을 쉽게 못함</li>
+<li>서버 구현에 있어서 sync 를 위해서 RESTful하게 설계되어야함</li>
+<li>rails 후렌들리</li>
+<li>perl 로도 요런거 graceful 하게 할 수 있음</li>
+<li>요즘들어 ruby 에 많은 관심이 감</li>
+<li>JST(Javascript Template)를 사용하면 more graceful, 허놔 그것은 rails
+only</li>
+<li>template engine 바꿔 낄 수 있음</li>
+</ul>
+
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="http://documentcloud.github.com/backbone/">backbone.js</a></li>
+<li><a href="http://backbonetutorials.com/">Backbone.js Tutorials</a></li>
+<li><a href="http://arturadib.com/hello-backbonejs/">Hello Backbone.js Tutorial</a></li>
+<li><a href="http://liquidmedia.ca/blog/2011/01/backbone-js-part-1/">An Intro to Backbone.js: Part 1</a></li>
+<li><a href="http://liquidmedia.ca/blog/2011/01/an-intro-to-backbone-js-part-2-controllers-and-views/">An Intro to Backbone.js: Part 2</a></li>
+<li><a href="http://liquidmedia.ca/blog/2011/02/backbone-js-part-3/">An Intro to Backbone.js: Part 3</a></li>
+<li><a href="http://www.jamesyu.org/2011/01/27/cloudedit-a-backbone-js-tutorial-by-example/">Backbone.js Tutorial with Rails Part 1</a></li>
+<li><a href="http://www.jamesyu.org/2011/02/09/backbone.js-tutorial-with-rails-part-2/">Backbone.js Tutorial with Rails Part 2</a></li>
+<li><a href="https://github.com/documentcloud/backbone/wiki/Tutorials%2C-blog-posts-and-example-sites">blog posts and example sites</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mysql ENUM and Test::*]]></title>
+    <link href="http://silexkr.github.com/blog/2012/02/03/mysql-enum-and-test-star/"/>
+    <updated>2012-02-03T19:06:00+09:00</updated>
+    <id>http://silexkr.github.com/blog/2012/02/03/mysql-enum-and-test-star</id>
+    <content type="html"><![CDATA[<h1>MySQL ENUM과 Test:: 이야기</h1>
+
+<h2>MySQL의 ENUM type</h2>
+
+<p> 제가 MySQL을 사용한지 약 10년 정도의 시간이 지났습니다. 처음 MySQL을
+사용하던 당시 MySQL 3.X는 지금의 MySQL 5.X 버전에 비하면 DB로써
+여러가지로 부족한 점이 많았습니다. - 단일 저장 engine 지원(MyISAM),
+컴파일타임 전역 인코딩 지정, FK 지원, View/Trigger/SP 지원등 -
+하지만 탁월한 읽기속도를 바탕으로 대중적인 몇몇 PHP 응용프로그램에 성공적으로
+탑재되면서 거의 10년간 오픈소스 진영 DB의 대명사로 자리를 잡았고 그동안
+많은 우여곡절에도 꾸준히 발전해 현재는 상용 DB와 견주어도 부족하지 않은
+다양한 기능을 제공하고 있습니다.</p>
+
+<p> 하지만 개인적으로 그동안 MySQL에 추가된 좋은 최신의 기능들 보다 MySQL
+이라는 DB를 떠올리면 가장 먼저 머리속에 떠오르는 애증의 기능이 하나 있습니다.
+그것은 바로 오늘 소개할 <code>ENUM</code>이라는 자료형입니다.</p>
+
+<p><code>ENUM</code>은 C 언어, Java등에서 이미 널리 사용되고 있는 enumeration을 의미하는 자료형으로
+MySQL에서 <code>ENUM</code>은 단일 컬럼에 미리 지정한 자료만 저장 가능하도록 하는 특수 자료형 입니다.
+MySQL.com 에서는 <code>ENUM</code>을 다음과 같이 소개하고 있습니다.</p>
+
+<p>  An ENUM is a string object with a value chosen from a list of permitted values that are enumerated
+  explicitly in the column specification at table creation time.</p>
+
+<p><code>ENUM</code> 자료형을 사용할 때 얻을 수 있는 장점은 다음과 같습니다.</p>
+
+<ol>
+<li>Text(varchar,char,text)로 값을 저장하는것에 비해 자료의 정합성을 높힐 수 있다</li>
+<li>Text + FK 으로 설계하는 것에 비해 Table수를 줄일 수 있다.</li>
+<li>enum index 를 통한 연산을 사용할 수 있다.</li>
+</ol>
+
+
+<p> 첫번째 장점은 부연설명이 필요없는 장점입니다. text field 컬럼은 사실상 너무 많이 가능성이 열려있는
+컬럼이기 때문에 아무리 응용프로그램에서 정합성을 체크해도 조금만 실수하면 바로 엉뚱한 값들이
+들어와 속을 썩이기 마련입니다. 두번째는 조금 논쟁이 있을 수 있는 내용입니다. 사실 앞서 설명한
+정합성에 대한 문제를 정석으로 해결하는 방법은 해당 컬럼에 들어올 수 있는 값을 row로 가진 별도의 자료 테이블을
+생성하고 그 컬럼에서 FK 제약 조건을 통해 정합성을 확보하는 방식입니다. 이 방식은 어떤 DBMS에서도
+사용할수 있는 방법이기 때문에 이식성이 뛰어나다는 장점이 있습니다. 하지만 그런 형태의 제약의 수가 아주 많다면
+그 수만큼 테이블이 늘어나거나 혹은 메타정보를 관리하는 별도 테이블을 두고 관리해야 하기 때문에 번거롭습니다.
+하지만 <code>ENUM</code>자료 형을 사용할 경우 상대적으로 적은 비용으로 원하는 바를 얻을 수 있기 때문에 경우에 따라서는
+훌륭한 대안입니다. 세번째 장점은 의외로 모르는 분들이 많은 기능이지만 개인적으로 MySQL <code>ENUM</code> 자료형의
+가장 멋진 기능이라고 생각하는 기능입니다. enum index란 <code>ENUM</code>으로 정의된 컬럼에 입력과 출력에 있어서
+지정된 &#8216;값&#8217; 자체 뿐만 아니라 색인(index)값을 이용해 해당 값에 접근할 수 있는 색인을 말합니다. 예를 들면</p>
+
+<pre><code>+-------+-------------------+------+-----+---------+----------------+
+| Field | Type              | Null | Key | Default | Extra          |
++-------+-------------------+------+-----+---------+----------------+
+| id    | int(11) unsigned  | NO   | PRI | NULL    | auto_increment |
+| c1    | enum('a','b','c') | YES  |     | NULL    |                |
++-------+-------------------+------+-----+---------+----------------+
+</code></pre>
+
+<p>다음 질의와 결과는 아래와 같습니다.</p>
+
+<pre><code>SELECT id,c1,c1+0 FROM `t1`
++----+------+------+
+| id | c1   | c1+0 |
++----+------+------+
+|  1 | a    |    1 |
+|  2 | b    |    2 |
+|  3 | c    |    3 |
++----+------+------+
+</code></pre>
+
+<p>그후 다음 질의와 결과는 다음과 같습니다.</p>
+
+<pre><code>INSERT INTO t1(c1) VALUES(1);
+SELECT id,c1,c1+0 FROM `t1`
++----+------+------+
+| id | c1   | c1+0 |
++----+------+------+
+|  1 | a    |    1 |
+|  2 | b    |    2 |
+|  3 | c    |    3 |
+|  4 | a    |    1 |
++----+------+------+
+</code></pre>
+
+<p>이처럼 SELECT 문에서 <code>ENUM</code> 자료형 컬럼에 숫자 연산을 하면 색인값을 반환합니다. 마찬가지로 INSERT / UPDATE 문에서
+<code>ENUM</code> 자료형 컬럼에 색인을 넣으면 자동으로 해당 컬럼을 넣어줍니다. 이런 특징은 특히 웹 프로그래밍에서 HTML의
+Input 요소중 Radio 요소와 아주 궁합이 잘 맞습니다. 예를들면 위에 설명한 c1 컬럼에 값을 넣는
+Radio 요소는 다음과 같이 단순하게 작성할 수 있습니다.</p>
+
+<pre><code> &lt;input type="radio" id="c11" name="c1" value="1"&gt; a
+ &lt;input type="radio" id="c12" name="c1" value="2"&gt; b
+ &lt;input type="radio" id="c13" name="c1" value="3"&gt; c
+</code></pre>
+
+<p>이런 방식은 Radio 요소를 많게는 수백개 이상 다뤄야하는 그동안의 작업을 아주 단순하게 만들어 줬습니다.</p>
+
+<h2>Perl test code</h2>
+
+<p>이 포스트는 단순한 <code>ENUM</code> 자료형의 장점뿐만 아니라 그동안 이 자료형을 사용하면서 만났던
+몇가지 문제들을 알아보고 재현할 수 있는 perl 코드를 작성해보는것을 목적으로 하고 있습니다.
+이런 형태의 문제들은 주로 사용 초기에 발견되지 않고 오랜 기간 수정과 삭제를 반복하다가 발견하곤
+하는데 문제에 대한 명확한 재현이 없이는 기존 자료에서 잘못된 내용을 찾는것도 쉽지 않고 같은
+실수를 회피하도록 코드를 작성하는데도 많은 어려움이 있었기 때문에 따로 시간을 내서
+발생하는 현상에 대해 재현할 수 있는 코드를 작성했습니다.</p>
+
+<p>코드에는 평소에 제가 즐겨쓰는 몇가지 모듈이 사용됩니다. <a href="http://metacpan.org/module/Test::Most">Test::Most</a>, <a href="http://metacpan.org/module/DBIx::Simple">DBIx::Simple</a>,
+<a href="http://metacpan.org/module/SQL::Abstract">SQL::Abstract</a>, <a href="http://metacpan.org/module/Test::Databaserow">Test::DatabaseRow</a></p>
+
+<ul>
+<li>Test::Most는 Test::More와 이름이 거의 흡사하지만 자주 사용하는 Test::Differences,Test::Deep,Test::Exception 등을
+같이 불러주기 때문에 습관적으로 사용합니다.</li>
+<li>DBIx::Simple + SQL::Abstract는 복잡하게 ORM을 사용하지 않고 간편하게 DB에 값을 주고 받을 때 사용합니다.</li>
+<li>Test::DatabaseRow는 DB의 구조가 아닌 <code>값</code>을 기준으로 검증코드를 만들고자 할때 사용합니다. 최근에 특정작업을 진행
+하면서 많이 사용하게 되었습니다.</li>
+<li>테스트 코드를 작성할 때 반복사용되는 부분은 최대한 함수로 분리를 하고 실제 검증이 들어가는 부분은
+가능하면 block({,})으로 scope를 분리시키면 비슷한 시도의 검증코드를 다수 만들때 복사해서 붙이기 용이합니다.
+( &#8220;특히 subtest를 사용하면 test를 개념적으로 분리할 수 있어 더욱 좋다&#8221; by @JEEN_LEE )</li>
+</ul>
+
+
+<h2>Code</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+<span class='line-number'>144</span>
+<span class='line-number'>145</span>
+<span class='line-number'>146</span>
+<span class='line-number'>147</span>
+<span class='line-number'>148</span>
+<span class='line-number'>149</span>
+<span class='line-number'>150</span>
+<span class='line-number'>151</span>
+<span class='line-number'>152</span>
+<span class='line-number'>153</span>
+<span class='line-number'>154</span>
+<span class='line-number'>155</span>
+<span class='line-number'>156</span>
+<span class='line-number'>157</span>
+<span class='line-number'>158</span>
+<span class='line-number'>159</span>
+<span class='line-number'>160</span>
+<span class='line-number'>161</span>
+<span class='line-number'>162</span>
+<span class='line-number'>163</span>
+<span class='line-number'>164</span>
+<span class='line-number'>165</span>
+<span class='line-number'>166</span>
+<span class='line-number'>167</span>
+<span class='line-number'>168</span>
+<span class='line-number'>169</span>
+<span class='line-number'>170</span>
+<span class='line-number'>171</span>
+<span class='line-number'>172</span>
+<span class='line-number'>173</span>
+<span class='line-number'>174</span>
+<span class='line-number'>175</span>
+<span class='line-number'>176</span>
+<span class='line-number'>177</span>
+<span class='line-number'>178</span>
+<span class='line-number'>179</span>
+<span class='line-number'>180</span>
+<span class='line-number'>181</span>
+<span class='line-number'>182</span>
+<span class='line-number'>183</span>
+<span class='line-number'>184</span>
+<span class='line-number'>185</span>
+<span class='line-number'>186</span>
+<span class='line-number'>187</span>
+<span class='line-number'>188</span>
+<span class='line-number'>189</span>
+<span class='line-number'>190</span>
+<span class='line-number'>191</span>
+<span class='line-number'>192</span>
+<span class='line-number'>193</span>
+<span class='line-number'>194</span>
+<span class='line-number'>195</span>
+<span class='line-number'>196</span>
+<span class='line-number'>197</span>
+<span class='line-number'>198</span>
+<span class='line-number'>199</span>
+<span class='line-number'>200</span>
+<span class='line-number'>201</span>
+<span class='line-number'>202</span>
+<span class='line-number'>203</span>
+<span class='line-number'>204</span>
+<span class='line-number'>205</span>
+<span class='line-number'>206</span>
+<span class='line-number'>207</span>
+<span class='line-number'>208</span>
+<span class='line-number'>209</span>
+<span class='line-number'>210</span>
+<span class='line-number'>211</span>
+<span class='line-number'>212</span>
+<span class='line-number'>213</span>
+<span class='line-number'>214</span>
+<span class='line-number'>215</span>
+<span class='line-number'>216</span>
+<span class='line-number'>217</span>
+<span class='line-number'>218</span>
+<span class='line-number'>219</span>
+<span class='line-number'>220</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="c1">#!/usr/bin/env perl</span>
+</span><span class='line'><span class="k">use</span> <span class="nn">Test::</span><span class="n">Most</span><span class="p">;</span>
+</span><span class='line'><span class="k">use</span> <span class="nn">Test::</span><span class="n">DatabaseRow</span><span class="p">;</span>
+</span><span class='line'><span class="k">use</span> <span class="nn">Test::</span><span class="n">Group</span><span class="p">;</span>
+</span><span class='line'><span class="k">use</span> <span class="nn">DBIx::</span><span class="n">Simple</span><span class="p">;</span>
+</span><span class='line'><span class="k">use</span> <span class="nn">SQL::</span><span class="n">Abstract</span><span class="p">;</span>
+</span><span class='line'><span class="k">use</span> <span class="nn">Const::</span><span class="n">Fast</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">const</span> <span class="k">my</span> <span class="nv">$DATABASE</span> <span class="o">=&gt;</span> <span class="s">&#39;testdb&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="n">const</span> <span class="k">my</span> <span class="nv">$TABLE</span>    <span class="o">=&gt;</span> <span class="s">&#39;t1&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="n">const</span> <span class="k">my</span> <span class="nv">$COLUMN</span>   <span class="o">=&gt;</span> <span class="s">&#39;c1&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">const</span> <span class="k">my</span> <span class="nv">$DBHOST</span> <span class="o">=&gt;</span> <span class="s">&#39;127.0.0.1&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="n">const</span> <span class="k">my</span> <span class="nv">$DBUSER</span> <span class="o">=&gt;</span> <span class="s">&#39;root&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="n">const</span> <span class="k">my</span> <span class="nv">$DBPASS</span> <span class="o">=&gt;</span> <span class="sx">q()</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">my</span> <span class="nv">$db</span> <span class="o">=</span> <span class="nn">DBIx::</span><span class="n">Simple</span><span class="o">-&gt;</span><span class="nb">connect</span><span class="p">(</span>
+</span><span class='line'>    <span class="s">&quot;DBI:mysql:host=$DBHOST&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nv">$DBUSER</span><span class="p">,</span> <span class="nv">$DBPASS</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">mysql_enable_utf8</span>    <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">mysql_auto_reconnect</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">)</span> <span class="ow">or</span> <span class="nb">die</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$db</span><span class="o">-&gt;</span><span class="n">abstract</span> <span class="o">=</span> <span class="nn">SQL::</span><span class="n">Abstract</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">(</span> <span class="p">{</span> <span class="n">quota_char</span> <span class="o">=&gt;</span> <span class="s">&#39;`&#39;</span><span class="p">,</span> <span class="n">name_sep</span> <span class="o">=&gt;</span> <span class="s">&#39;.&#39;</span> <span class="p">}</span> <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">local</span> <span class="nv">$</span><span class="nn">Test::DatabaseRow::</span><span class="nv">dbh</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="n">dbh</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subtest</span> <span class="s">&quot;enum column에 컬럼 추가가 발생한경우(POST)&quot;</span> <span class="o">=&gt;</span>  <span class="k">sub </span><span class="p">{</span>
+</span><span class='line'>    <span class="k">my</span> <span class="nv">%h</span> <span class="o">=</span> <span class="p">(</span>
+</span><span class='line'>        <span class="mi">1</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="n">i</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">},</span>
+</span><span class='line'>        <span class="mi">2</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="n">i</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">},</span>
+</span><span class='line'>        <span class="mi">3</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="n">i</span> <span class="o">=&gt;</span> <span class="mi">3</span> <span class="p">},</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">initialize</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------+------+-----+---------+----------------+</span>
+</span><span class='line'><span class="c1">#    | Field | Type              | Null | Key | Default | Extra          |</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------+------+-----+---------+----------------+</span>
+</span><span class='line'><span class="c1">#    | id    | int(11) unsigned  | NO   | PRI | NULL    | auto_increment |</span>
+</span><span class='line'><span class="c1">#    | c1    | enum(&#39;a&#39;,&#39;b&#39;,&#39;c&#39;) | YES  |     | NULL    |                |</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------+------+-----+---------+----------------+</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">insert_values</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">test_column_value</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">test_column_index</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">query</span><span class="p">(</span><span class="s">&quot;ALTER TABLE `$TABLE` CHANGE `$COLUMN` `$COLUMN` ENUM(&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;x&#39;,&#39;y&#39;,&#39;z&#39;)  NULL  DEFAULT NULL&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#    +-------+-------------------------------+------+-----+---------+----------------+</span>
+</span><span class='line'><span class="c1">#    | Field | Type                          | Null | Key | Default | Extra          |</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------------------+------+-----+---------+----------------+</span>
+</span><span class='line'><span class="c1">#    | c1    | enum(&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;x&#39;,&#39;y&#39;,&#39;z&#39;) | YES  |     | NULL    |                |</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------------------+------+-----+---------+----------------+</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">test_column_value</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">test_column_index</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subtest</span> <span class="s">&quot;enum column에 컬럼 추가가 발생한경우(PRE)&quot;</span> <span class="o">=&gt;</span>  <span class="k">sub </span><span class="p">{</span>
+</span><span class='line'>    <span class="k">my</span> <span class="nv">%h</span> <span class="o">=</span> <span class="p">(</span>
+</span><span class='line'>        <span class="mi">1</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="n">i</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">},</span>
+</span><span class='line'>        <span class="mi">2</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="n">i</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">},</span>
+</span><span class='line'>        <span class="mi">3</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="n">i</span> <span class="o">=&gt;</span> <span class="mi">3</span> <span class="p">},</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">initialize</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------+------+-----+---------+----------------+</span>
+</span><span class='line'><span class="c1">#    | Field | Type              | Null | Key | Default | Extra          |</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------+------+-----+---------+----------------+</span>
+</span><span class='line'><span class="c1">#    | id    | int(11) unsigned  | NO   | PRI | NULL    | auto_increment |</span>
+</span><span class='line'><span class="c1">#    | c1    | enum(&#39;a&#39;,&#39;b&#39;,&#39;c&#39;) | YES  |     | NULL    |                |</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------+------+-----+---------+----------------+</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">insert_values</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">test_column_value</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">test_column_index</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">query</span><span class="p">(</span><span class="s">&quot;ALTER TABLE `$TABLE` CHANGE `$COLUMN` `$COLUMN` ENUM(&#39;x&#39;,&#39;y&#39;,&#39;z&#39;,&#39;a&#39;,&#39;b&#39;,&#39;c&#39;)  NULL  DEFAULT NULL&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#    +-------+-------------------------------+------+-----+---------+----------------+</span>
+</span><span class='line'><span class="c1">#    | Field | Type                          | Null | Key | Default | Extra          |</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------------------+------+-----+---------+----------------+</span>
+</span><span class='line'><span class="c1">#    | c1    | enum(&#39;x&#39;,&#39;y&#39;,&#39;z&#39;,&#39;a&#39;,&#39;b&#39;,&#39;c&#39;) | YES  |     | NULL    |                |</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------------------+------+-----+---------+----------------+</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">test_column_value</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">test_column_index</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span> <span class="c1"># Fail</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subtest</span> <span class="s">&quot;enum column에 숫자 이름의 컬럼이 들어간 경우(1,2,3)&quot;</span> <span class="o">=&gt;</span>  <span class="k">sub </span><span class="p">{</span>
+</span><span class='line'>    <span class="k">my</span> <span class="nv">%h</span> <span class="o">=</span> <span class="p">(</span>
+</span><span class='line'>        <span class="mi">1</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="s">&#39;1&#39;</span><span class="p">,</span> <span class="n">i</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">},</span>
+</span><span class='line'>        <span class="mi">2</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="s">&#39;2&#39;</span><span class="p">,</span> <span class="n">i</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">},</span>
+</span><span class='line'>        <span class="mi">3</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="s">&#39;3&#39;</span><span class="p">,</span> <span class="n">i</span> <span class="o">=&gt;</span> <span class="mi">3</span> <span class="p">},</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">initialize</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------+------+-----+---------+----------------+</span>
+</span><span class='line'><span class="c1">#    | Field | Type              | Null | Key | Default | Extra          |</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------+------+-----+---------+----------------+</span>
+</span><span class='line'><span class="c1">#    | id    | int(11) unsigned  | NO   | PRI | NULL    | auto_increment |</span>
+</span><span class='line'><span class="c1">#    | c1    | enum(&#39;1&#39;,&#39;2&#39;,&#39;3&#39;) | YES  |     | NULL    |                |</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------+------+-----+---------+----------------+</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">insert_values</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">test_column_value</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">test_column_index</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">query</span><span class="p">(</span><span class="s">&quot;INSERT INTO t1(id,c1) VALUES(4,1)&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">all_row_ok</span><span class="p">(</span>
+</span><span class='line'>        <span class="n">table</span>       <span class="o">=&gt;</span> <span class="nv">$TABLE</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">where</span>       <span class="o">=&gt;</span> <span class="p">[</span> <span class="n">id</span> <span class="o">=&gt;</span> <span class="mi">4</span> <span class="p">],</span>
+</span><span class='line'>        <span class="n">tests</span>       <span class="o">=&gt;</span> <span class="p">[</span> <span class="nv">$COLUMN</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">],</span>
+</span><span class='line'>        <span class="n">description</span> <span class="o">=&gt;</span> <span class="s">&quot;if input just 1&quot;</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">query</span><span class="p">(</span><span class="s">&quot;INSERT INTO t1(id,c1) VALUES(5,&#39;1&#39;)&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">all_row_ok</span><span class="p">(</span>
+</span><span class='line'>        <span class="n">table</span>       <span class="o">=&gt;</span> <span class="nv">$TABLE</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">where</span>       <span class="o">=&gt;</span> <span class="p">[</span> <span class="n">id</span> <span class="o">=&gt;</span> <span class="mi">5</span> <span class="p">],</span>
+</span><span class='line'>        <span class="n">tests</span>       <span class="o">=&gt;</span> <span class="p">[</span> <span class="nv">$COLUMN</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">],</span>
+</span><span class='line'>        <span class="n">description</span> <span class="o">=&gt;</span> <span class="s">&quot;if input &#39;1&#39;&quot;</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="n">subtest</span> <span class="s">&quot;enum column에 숫자 이름의 컬럼이 들어간 경우(0,1,2)&quot;</span> <span class="o">=&gt;</span>  <span class="k">sub </span><span class="p">{</span>
+</span><span class='line'>    <span class="k">my</span> <span class="nv">%h</span> <span class="o">=</span> <span class="p">(</span>
+</span><span class='line'>        <span class="mi">1</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="s">&#39;0&#39;</span><span class="p">,</span> <span class="n">i</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">},</span>
+</span><span class='line'>        <span class="mi">2</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="s">&#39;1&#39;</span><span class="p">,</span> <span class="n">i</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">},</span>
+</span><span class='line'>        <span class="mi">3</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="s">&#39;2&#39;</span><span class="p">,</span> <span class="n">i</span> <span class="o">=&gt;</span> <span class="mi">3</span> <span class="p">},</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">initialize</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------+------+-----+---------+----------------+</span>
+</span><span class='line'><span class="c1">#    | Field | Type              | Null | Key | Default | Extra          |</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------+------+-----+---------+----------------+</span>
+</span><span class='line'><span class="c1">#    | id    | int(11) unsigned  | NO   | PRI | NULL    | auto_increment |</span>
+</span><span class='line'><span class="c1">#    | c1    | enum(&#39;0&#39;,&#39;1&#39;,&#39;2&#39;) | YES  |     | NULL    |                |</span>
+</span><span class='line'><span class="c1">#    +-------+-------------------+------+-----+---------+----------------+</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">insert_values</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">test_column_value</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">test_column_index</span><span class="p">(</span><span class="nv">%h</span><span class="p">);</span> <span class="c1">#Fail</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">query</span><span class="p">(</span><span class="s">&quot;INSERT INTO t1(id,c1) VALUES(4,1)&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">all_row_ok</span><span class="p">(</span>
+</span><span class='line'>        <span class="n">table</span>       <span class="o">=&gt;</span> <span class="nv">$TABLE</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">where</span>       <span class="o">=&gt;</span> <span class="p">[</span> <span class="n">id</span> <span class="o">=&gt;</span> <span class="mi">4</span> <span class="p">],</span>
+</span><span class='line'>        <span class="n">tests</span>       <span class="o">=&gt;</span> <span class="p">[</span> <span class="nv">$COLUMN</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">],</span>
+</span><span class='line'>        <span class="n">description</span> <span class="o">=&gt;</span> <span class="s">&quot;if input just 1&quot;</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">query</span><span class="p">(</span><span class="s">&quot;INSERT INTO t1(id,c1) VALUES(5,&#39;1&#39;)&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">all_row_ok</span><span class="p">(</span>
+</span><span class='line'>        <span class="n">table</span>       <span class="o">=&gt;</span> <span class="nv">$TABLE</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">where</span>       <span class="o">=&gt;</span> <span class="p">[</span> <span class="n">id</span> <span class="o">=&gt;</span> <span class="mi">5</span> <span class="p">],</span>
+</span><span class='line'>        <span class="n">tests</span>       <span class="o">=&gt;</span> <span class="p">[</span> <span class="nv">$COLUMN</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">],</span>
+</span><span class='line'>        <span class="n">description</span> <span class="o">=&gt;</span> <span class="s">&quot;if input &#39;1&#39;&quot;</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">done_testing</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">sub </span><span class="nf">query</span><span class="p">($)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">my</span> <span class="p">(</span><span class="nv">$query</span><span class="p">)</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$db</span><span class="o">-&gt;</span><span class="n">query</span><span class="p">(</span><span class="nv">$query</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="k">print</span> <span class="bp">STDERR</span> <span class="s">&quot;&gt;&gt; &quot;</span><span class="p">,</span> <span class="nv">$query</span><span class="p">,</span> <span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">sub </span><span class="nf">initialize</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">my</span> <span class="nv">%h</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">my</span> <span class="nv">@cols</span> <span class="o">=</span> <span class="nb">map</span> <span class="p">{</span> <span class="nb">sprintf</span> <span class="sx">qq(&#39;$h{$_}-&gt;{n}&#39;)</span> <span class="p">}</span> <span class="nb">sort</span> <span class="nb">keys</span> <span class="nv">%h</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">my</span> <span class="nv">$enum</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="sx">q{ENUM(%s)}</span><span class="p">,</span><span class="nb">join</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">,</span><span class="nv">@cols</span><span class="p">)</span> <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">print</span> <span class="bp">STDERR</span> <span class="s">&quot;Database : $DATABASE\n&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">query</span><span class="p">(</span><span class="s">&quot;DROP DATABASE IF EXISTS `$DATABASE`&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">query</span><span class="p">(</span><span class="s">&quot;CREATE DATABASE `$DATABASE` DEFAULT CHARACTER SET `utf8`&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">query</span><span class="p">(</span><span class="s">&quot;USE `$DATABASE`&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">query</span><span class="p">(</span><span class="s">&quot;CREATE TABLE `$TABLE` (id INT(11) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT) DEFAULT CHARACTER SET `utf8` ENGINE = `InnoDB`&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">query</span><span class="p">(</span><span class="s">&quot;ALTER TABLE `$TABLE` ADD `$COLUMN` $enum  NULL  DEFAULT NULL  AFTER `id`&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">print</span> <span class="bp">STDERR</span> <span class="s">&#39;-&#39;</span> <span class="n">x</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">sub </span><span class="nf">insert_values</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">my</span> <span class="nv">%h</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">foreach</span> <span class="k">my</span> <span class="nv">$k</span> <span class="p">(</span> <span class="nb">sort</span> <span class="nb">keys</span> <span class="nv">%h</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$db</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span> <span class="nv">$TABLE</span><span class="p">,</span> <span class="p">{</span> <span class="n">id</span> <span class="o">=&gt;</span> <span class="nv">$k</span><span class="p">,</span> <span class="nv">$COLUMN</span> <span class="o">=&gt;</span> <span class="nv">$h</span><span class="p">{</span><span class="nv">$k</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;n&#39;</span><span class="p">}</span> <span class="p">}</span> <span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">sub </span><span class="nf">test_column_value</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">my</span> <span class="nv">%h</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">foreach</span> <span class="k">my</span> <span class="nv">$k</span> <span class="p">(</span> <span class="nb">sort</span> <span class="nb">keys</span> <span class="nv">%h</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">all_row_ok</span><span class="p">(</span>
+</span><span class='line'>            <span class="n">table</span>       <span class="o">=&gt;</span> <span class="nv">$TABLE</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">where</span>       <span class="o">=&gt;</span> <span class="p">[</span> <span class="n">id</span> <span class="o">=&gt;</span> <span class="nv">$k</span> <span class="p">],</span>
+</span><span class='line'>            <span class="n">tests</span>       <span class="o">=&gt;</span> <span class="p">[</span> <span class="nv">$COLUMN</span> <span class="o">=&gt;</span> <span class="nv">$h</span><span class="p">{</span><span class="nv">$k</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">n</span><span class="p">}</span> <span class="p">],</span>
+</span><span class='line'>            <span class="n">description</span> <span class="o">=&gt;</span> <span class="s">&quot;row $k // $COLUMN is $h{$k}-&gt;{&#39;n&#39;}&quot;</span>
+</span><span class='line'>        <span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">sub </span><span class="nf">test_column_index</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">my</span> <span class="nv">%h</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">foreach</span> <span class="k">my</span> <span class="nv">$k</span> <span class="p">(</span> <span class="nb">sort</span> <span class="nb">keys</span> <span class="nv">%h</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">all_row_ok</span><span class="p">(</span>
+</span><span class='line'>            <span class="n">sql</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s">&quot;SELECT $COLUMN + 0 as i FROM $TABLE WHERE id = ?&quot;</span><span class="p">,</span> <span class="nv">$k</span> <span class="p">],</span>
+</span><span class='line'>            <span class="n">tests</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="n">i</span> <span class="o">=&gt;</span> <span class="nv">$h</span><span class="p">{</span><span class="nv">$k</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;i&#39;</span><span class="p">}</span> <span class="p">],</span>
+</span><span class='line'>            <span class="n">description</span> <span class="o">=&gt;</span> <span class="s">&quot;$k: index of $COLUMN is $h{$k}-&gt;{&#39;i&#39;}&quot;</span>
+</span><span class='line'>        <span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ENUM type side effects</h2>
+
+<p>위 테스트를 통해 알수있는 ENUM 자료형 사용시 주의해야할 사항은 다음과 같습니다.</p>
+
+<ol>
+<li><code>ENUM</code>으로 정의된 컬럼에 내부 색인에 영향을 주도록 컬럼의 값 순서를 변경하면 DB에 저장된 &#8216;값&#8217;에는 영향이 없지만 색인에는 영향이 생깁니다.</li>
+<li><code>ENUM</code>의 값으로 색인과 동일한 숫자를 사용 할 경우 인용부호의 사용에 주의하지 않으면 예상하는 결과와 다른 동작을 초래할 수 있습니다.</li>
+</ol>
+
+
+<p>이 밖에 <code>ENUM</code> 자료형을 사용했을 때 고려해야 할 사항은 다음 링크를 참고하시기 바랍니다. <a href="http://komlenic.com/244/8-reasons-why-mysqls-enum-data-type-is-evil/">8 Reasons Why MySQL&#8217;s ENUM Data Type Is Evil</a></p>
+
+<h2>Conclusion</h2>
+
+<ul>
+<li>MySQL의 <code>ENUM</code> 자료형은 경우에 따라 유용하지만 발생할 수 있는 몇 가지 부작용에 주의해야한다.</li>
+<li>상황을 재현하는 테스트코드는 문제를 이해하고 공유하는데 도움을 준다.</li>
+<li>Test::Most, Test::DatabaseRow 모듈은 테스트 코드 작성에 유용하다.</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Silex Techtalk - 02/01 - 2012]]></title>

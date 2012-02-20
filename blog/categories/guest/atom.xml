@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: techtalk | Silex Blog]]></title>
-  <link href="http://silexkr.github.com/blog/categories/techtalk/atom.xml" rel="self"/>
+  <title><![CDATA[Category: guest | Silex Blog]]></title>
+  <link href="http://silexkr.github.com/blog/categories/guest/atom.xml" rel="self"/>
   <link href="http://silexkr.github.com/"/>
   <updated>2012-02-20T22:32:03+09:00</updated>
   <id>http://silexkr.github.com/</id>
@@ -47,20 +47,6 @@
 
 <blockquote class="twitter-tweet"><p>간담회 2차끝. 귀가</p>&mdash; JEEN (@JEEN_LEE) <a href="https://twitter.com/JEEN_LEE/status/169104418652946432" data-datetime="2012-02-13T17:03:29+00:00">February 13, 2012</a></blockquote>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Silex Techtalk - 02/01 - 2012]]></title>
-    <link href="http://silexkr.github.com/blog/2012/02/01/silex-techtalk-02-01-2012/"/>
-    <updated>2012-02-01T17:41:00+09:00</updated>
-    <id>http://silexkr.github.com/blog/2012/02/01/silex-techtalk-02-01-2012</id>
-    <content type="html"><![CDATA[<p>  오늘 있었던 Silex Techtalk 을 Storify 로 정리해보았습니다.</p>
-
-<script src="http://storify.com/jeen_lee/silex-techtalk-1.js"></script>
-
-
-<p><noscript>[<a href="http://storify.com/jeen_lee/silex-techtalk-1" target="_blank">View the story "Silex Techtalk 02/01 - 2012" on Storify</a>]</noscript></p>
 ]]></content>
   </entry>
   

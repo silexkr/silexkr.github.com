@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Silex Blog</title>
+  <title>Mysql ENUM and Test::* - Silex Blog</title>
   <meta name="author" content="Silex">
 
   
-  <meta name="description" content="지난 13일 CEO @y0gnbin 의 지인인 G 사 S모님을 초청해서 서버 가상화에 대한 이런 저런 얘기를 들을 수 있었습니다. 실제로 CentOS 5.7 에 기본으로 세팅된 환경 아래에서 실제로 Dom-U 를 만드는 과정과 주의점 등등에 대한 이야기가 주를 &hellip;">
+  <meta name="description" content="MySQL ENUM과 Test:: 이야기 MySQL의 ENUM type 제가 MySQL을 사용한지 약 10년 정도의 시간이 지났습니다. 처음 MySQL을
+사용하던 당시 MySQL 3.X는 지금의 MySQL 5.X 버전에 비하면 DB로써
+여러가지로 부족한 점이 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://silexkr.github.com">
+  <link rel="canonical" href="http://silexkr.github.com/blog/2012/02/03/mysql-enum-and-test-star">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -69,373 +71,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/02/19/guest-speech-number-1/">Guest Speech #1 - G사 S님</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-19T16:55:00+09:00" pubdate data-updated="true">Feb 19<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/02/19/guest-speech-number-1/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>  지난 13일 CEO @y0gnbin 의 지인인 G 사 S모님을 초청해서 <code>서버 가상화</code>에 대한 이런 저런 얘기를 들을 수 있었습니다.</p>
-
-<p>  실제로 CentOS 5.7 에 기본으로 세팅된 환경 아래에서 실제로 Dom-U 를 만드는 과정과 주의점 등등에 대한 이야기가 주를 이뤘습니다.</p>
-
-<p>  물론 그 뒤에는 단순히 Xen 환경 구축에 관한 이야기 뿐만 아니라, G 사에 Xen 을 도입한 이야기, 그리고 G 사에서 오픈소스를 본격적으로 채용함으로 얻은 이런저런 메리트. 그리고 작은 회사에서는 감히 엄두도 못 낼 장비 스펙과 비용, 많은 성공사례와 오픈소스 도입에 이르기까지의 계측된 데이터와 검증 방법&#8230;</p>
-
-<p>  또한 서버구입시에 참고할 만한 스펙비교 방법도 전수받게 되었습니다.</p>
-
-<ul>
-<li><a href="http://www.spec.org/">http://www.spec.org/</a></li>
-</ul>
-
-
-<p>  아무튼 이런저런 돈주고도 쉽게 못 들을 이런저런 얘기는 장소를 바꿔가며 새벽 2시까지 이어갔고, 그때가 되어서야 해산을 했습니다.</p>
-
-<p>  <blockquote class="twitter-tweet"><p>Silex 외부연사 초청 강연회 준비&#8230; w/ @<a href="https://twitter.com/luzluna">luzluna</a> @<a href="https://twitter.com/keedi">keedi</a> @<a href="https://twitter.com/y0ngbin">y0ngbin</a> @<a href="https://twitter.com/rumidier">rumidier</a></p>&mdash; JEEN (@JEEN_LEE) <a href="https://twitter.com/JEEN_LEE/status/169021093208788992" data-datetime="2012-02-13T11:32:23+00:00">February 13, 2012</a></blockquote></p>
-
-<blockquote class="twitter-tweet"><p>silex 외부연사 초청강연 및 간담회 끝</p>&mdash; JEEN (@JEEN_LEE) <a href="https://twitter.com/JEEN_LEE/status/169082207439298563" data-datetime="2012-02-13T15:35:14+00:00">February 13, 2012</a></blockquote>
-
-
-
-
-<blockquote class="twitter-tweet"><p>w/ @<a href="https://twitter.com/luzluna">luzluna</a> @<a href="https://twitter.com/keedi">keedi</a> @<a href="https://twitter.com/y0ngbin">y0ngbin</a> shs님 (@ Caffé bene) [pic]: <a href="http://t.co/vla9d6P2" title="http://4sq.com/xYJMn7">4sq.com/xYJMn7</a></p>&mdash; JEEN (@JEEN_LEE) <a href="https://twitter.com/JEEN_LEE/status/169085458905702402" data-datetime="2012-02-13T15:48:09+00:00">February 13, 2012</a></blockquote>
-
-
-
-
-<blockquote class="twitter-tweet"><p>간담회 2차끝. 귀가</p>&mdash; JEEN (@JEEN_LEE) <a href="https://twitter.com/JEEN_LEE/status/169104418652946432" data-datetime="2012-02-13T17:03:29+00:00">February 13, 2012</a></blockquote>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/02/17/backbone-dot-js/">backbone.js</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-17T19:39:00+09:00" pubdate data-updated="true">Feb 17<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/02/17/backbone-dot-js/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>배경</h2>
-
-<p>아 <a href="http://documentcloud.github.com/backbone/">backbone.js</a> 가 만들어진 배경이 아니라, 제가 사용하게 된
-배경입니다. 회사에서 진행하는 <code>javascript</code> 를 나름 무겁게 사용하는
-프로젝트가 있습니다. &#8220;갑&#8221;님의 요구사항이 날이 갈수록 복잡해 짐에 따라
-<code>jquery</code> 플러그인도 맨들고, <code>require.js</code> 를 사용해서 파일을 조직화해서
-사용하고 있었습니다만 <code>$.ajax</code> 에 대한 callback 이 늘어남에 따라 점점
-코드의 복잡도가 증가해서 해결해야 될 문제라고 생각했습니다.</p>
-
-<p><a href="https://trello.com/">Trello</a> 에서
-<a href="http://blog.fogcreek.com/the-trello-tech-stack/">The Trello Tech Stack</a>
-<a href="http://documentcloud.github.com/backbone/">backbone.js</a>를 쓴다는 글을 보고 사용방법을 좀
-알아보았습니다.</p>
-
-<p><img src="http://blog.fogcreek.com/wp-content/uploads/2012/01/trello-freehand.jpg" alt="Trello Early Architecture Drawing" /></p>
-
-<h2>자세한 설명은 (몰라서)생략</h2>
-
-<p>왜 쓰는지 뭔가 좋은지 그런거 모릅니다. 여기서는 어떻게 사용하는지만
-다룹니다. 검색 ㄱㄱ</p>
-
-<p><img src="https://lh5.googleusercontent.com/-i82V0GanZr4/T0IfDIDWq6I/AAAAAAAAABY/VnAii_7ds5E/no_more_details.jpg" alt="자세한 설명은 생략한다" /></p>
-
-<h2>맨든사람</h2>
-
-<p><a href="https://twitter.com/#!/jashkenas">Jeremy Ashkenas - Twitter</a>,
-<a href="https://github.com/jashkenas/">Jeremy Ashkenas - Github</a></p>
-
-<p>요즘 가장 인기있는 코딩왕이 아닐까 합니다.</p>
-
-<ul>
-<li><a href="http://coffeescript.org/">CoffeeScript</a></li>
-<li><a href="http://documentcloud.github.com/underscore/">underscore.js</a></li>
-<li><a href="http://documentcloud.github.com/backbone/">backbone.js</a></li>
-</ul>
-
-
-<p>위에 세개다 저 사람이 맨들었답니다.</p>
-
-<h2>돈워리</h2>
-
-<p><a href="http://documentcloud.github.com/backbone/#examples">http://documentcloud.github.com/backbone/#examples</a></p>
-
-<ul>
-<li>FourSuare</li>
-<li>LinkedIn</li>
-<li>37 Signals</li>
-<li>Trello</li>
-<li>Silex(끼워 넣어 봅니다)</li>
-<li>&#8230;</li>
-</ul>
-
-
-<p>등에서 이미 쓰이고 있다고..</p>
-
-<h2>연습삼아 맨든 프로젝트</h2>
-
-<p>일단 <a href="http://coffeescript.org/">CoffeeScript</a>만세라서
-<a href="http://coffeescript.org/">CoffeeScript</a>로 구현하였습니다.</p>
-
-<p><a href="http://aanoaa.github.com/jquery-note/">jquery-note plugin</a>을 다시
-한번 만들어 봤습니다.</p>
-
-<h3>Server-side</h3>
-
-<p><img src="https://lh5.googleusercontent.com/-_aPZkJJp5LI/T0I_SRERM-I/AAAAAAAAABo/k_WLzmWNs08/s1024/res-res.example.png" alt="server-side" /></p>
-
-<p>RESTful 하게 구현되어야 합니다. <a href="http://documentcloud.github.com/backbone/">backbone.js</a>의 <code>model</code>과
-<code>collection</code>은 url 규약을 가지고 있습니다.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># http://documentcloud.github.com/backbone/#Sync
-</span><span class='line'>The default sync handler maps CRUD to REST like so:
-</span><span class='line'>
-</span><span class='line'>create → POST   /collection
-</span><span class='line'>read → GET   /collection[/id]
-</span><span class='line'>update → PUT   /collection/id
-</span><span class='line'>delete → DELETE   /collection/id</span></code></pre></td></tr></table></div></figure>
-
-
-<p>좀 간단하게 말하면 위에선 언급한 구조의 HTTP method 와 url 규약을
-지키고, 요청 헤더의 <code>Accept</code>에 걸맞는 응답을 줘야 합니다.</p>
-
-<p>서버와 sync 를 하기 위해 <code>model.save()</code> 또는 <code>collection.fetch()</code>를 호출
-하게 되는데 이때, 모든 요청 헤더에 <code>Accept: application/json</code> 을
-포함합니다. 새로운 item 을 만들기 위해 <code>POST</code> 요청을 보낼때도
-마찬가집니다. 이때는 추가로 <code>JSON.stringify(model)</code> 을 POST body 에
-넣고, <code>Content-type: application/json</code> 헤더를 포함합니다.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># part of request header
-</span><span class='line'>Accept    application/json, text/javascript, */*; q=0.01
-</span><span class='line'>Content-Type  application/json; charset=UTF-8
-</span><span class='line'>X-Requested-With  XMLHttpRequest</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># request body
-</span><span class='line'>{"qid":"1","status":"reopen","comment":""}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>server 에서 이런 데이터를 받아서 처리해야 하는(deserialize/serialize)
-자잘함을 피하기 위해 저는
-<a href="http://search.cpan.org/~bobtfish/Catalyst-Action-REST-0.96/lib/Catalyst/Controller/REST.pm">Catalyst::Controller::REST</a> 를
-사용했습니다. 요청/응답 헤더에서 사용가능한 &#8220;Accept&#8221;를 확인하고
-serialize/deserialize 를 자동으로 해주기 때문에 편리합니다.</p>
-
-<h3>Client-side</h3>
-
-<p><img src="https://lh5.googleusercontent.com/--90Nykdhcvc/T0IyuoSwCeI/AAAAAAAAABg/V0Lp1rRzJXE/preview-backbone-note.png" alt="preview" /></p>
-
-<ul>
-<li>상태 및 코멘트를 <code>note</code> 라 하겠습니다.</li>
-<li>위 그림처럼 한화면에 보여지는 <code>note</code>의 집합(또는 컬렉션)을 <code>query</code>
-라 하겠습니다.</li>
-</ul>
-
-
-<p><code>http://example.com/#/query/:id</code> url 을 감지하고 원하는 event 를 발생
-시켜야 합니다. 그러기 위해선 <code>Backbone.Router</code> 를 확장해서 app 전용
-router 를 만들어야 합니다.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nx">MyCollection</span> <span class="k">extends</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Collection</span>
-</span><span class='line'>  <span class="nv">model: </span><span class="nx">MyModel</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nx">MyRouter</span> <span class="k">extends</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Router</span>
-</span><span class='line'>  <span class="nv">routes:</span>
-</span><span class='line'>    <span class="s1">&#39;/query/:id&#39;</span><span class="o">:</span> <span class="s1">&#39;query&#39;</span>
-</span><span class='line'>  <span class="nv">query: </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span>
-</span><span class='line'>    <span class="c1"># do something</span>
-</span><span class='line'>    <span class="nv">coll = </span><span class="k">new</span> <span class="nx">MyCollection</span>
-</span><span class='line'>    <span class="nv">coll.url = </span><span class="s2">&quot;/query/#{id}&quot;</span>
-</span><span class='line'>    <span class="nx">coll</span><span class="p">.</span><span class="nx">fetch</span>
-</span><span class='line'>      <span class="nv">success: </span><span class="nf">(c, res) -&gt;</span>
-</span><span class='line'>        <span class="k">new</span> <span class="nx">MyView</span> <span class="p">{</span> <span class="nv">collection: </span><span class="nx">c</span> <span class="p">}</span>
-</span><span class='line'>      <span class="nv">error: </span><span class="nf">(c, res) -&gt;</span>
-</span><span class='line'>        <span class="c1"># error handling</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>http://example.com/#/query/2</code> 일때, <code>GET /query/2</code> 하고 응답이
-정상이면 <code>MyView</code> 를 만듭니다. view 가 초기화될때, render 를 호출하면
-DOM 이 알맞게 슥슥 바뀌게 됩니다. 일반적으로 <code>collection.models</code> 를
-순회하면서 html element 를 구성하고 특정 #id 에 append 합니다.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">MyView</span> <span class="k">extends</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span>
-</span><span class='line'>  <span class="nv">initialize: </span><span class="o">-&gt;</span>
-</span><span class='line'>    <span class="nx">do</span> <span class="nx">@render</span>
-</span><span class='line'>  <span class="nv">template:</span>
-</span><span class='line'>    <span class="s1">&#39;&#39;&#39;</span>
-</span><span class='line'><span class="s1">       is </span>
-</span><span class='line'><span class="s1">    &#39;&#39;&#39;</span>
-</span><span class='line'>  <span class="nv">render: </span><span class="o">=&gt;</span>
-</span><span class='line'>    <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">@collection</span><span class="p">.</span><span class="nx">models</span><span class="p">,</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span>
-</span><span class='line'>      <span class="c1"># 템플릿을 사용해서 슥슥하면 편리합니다. 예를들어..</span>
-</span><span class='line'>      <span class="nx">html</span> <span class="o">+=</span> <span class="nx">Mustache</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">@template</span><span class="p">,</span> <span class="p">{</span> <span class="nv">foo: </span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="nv">bar: </span><span class="s1">&#39;world&#39;</span> <span class="p">})</span> <span class="c1"># hello is world</span>
-</span><span class='line'>      <span class="c1"># 일반적으론 이렇게는 직접 데이터를 구성하지는 않겟고, item 을 사용하겟죠</span>
-</span><span class='line'>      <span class="nx">@delegateEvents</span><span class="p">()</span> <span class="c1"># event 처리에 대한 꼼순데 생략</span>
-</span><span class='line'>      <span class="err">@</span> <span class="c1"># render 의 마지막에 this 를 return 함으로써 jquery chain 을 사용할 수 있도록 합니다.</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><a href="http://documentcloud.github.com/backbone/">backbone.js</a> 을 사용한 부분의 코드입니다. 조금
-헷갈리수도 있는게, <a href="http://requirejs.org/">Require.js</a>를 사용해서 <code>define</code>,
-<code>order!</code> 같은 구문이 거슬릴 수도 있습니다만, 바다와 같은 마음으로
-이해해 주세요.</p>
-
-<div><script src='https://gist.github.com/1868873.js?file='></script>
-<noscript><pre><code>require [
-  &quot;jquery&quot;,
-  &quot;routers/root&quot;
-], ($, Router) -&gt;
-  $(document).ready -&gt;
-    new Router
-    Backbone.history.start()
-</code></pre></noscript></div>
-
-
-<h2>결론 및 느낀점</h2>
-
-<ul>
-<li>jquery plugin 으로 작성했을때 보다 복잡성은 줄어들고 코드의 양은 2/3
-정도로 줄어듬</li>
-<li>확장이 용이 해졌음, 더 복잡한 UI 에 대한 자신감 up</li>
-<li>js 가 웹애플리케이션의 일부분이 되어버림</li>
-<li>jquery plugin 과 달리 재사용을 쉽게 못함</li>
-<li>서버 구현에 있어서 sync 를 위해서 RESTful하게 설계되어야함</li>
-<li>rails 후렌들리</li>
-<li>perl 로도 요런거 graceful 하게 할 수 있음</li>
-<li>요즘들어 ruby 에 많은 관심이 감</li>
-<li>JST(Javascript Template)를 사용하면 more graceful, 허놔 그것은 rails
-only</li>
-<li>template engine 바꿔 낄 수 있음</li>
-</ul>
-
-
-<h2>See also</h2>
-
-<ul>
-<li><a href="http://documentcloud.github.com/backbone/">backbone.js</a></li>
-<li><a href="http://backbonetutorials.com/">Backbone.js Tutorials</a></li>
-<li><a href="http://arturadib.com/hello-backbonejs/">Hello Backbone.js Tutorial</a></li>
-<li><a href="http://liquidmedia.ca/blog/2011/01/backbone-js-part-1/">An Intro to Backbone.js: Part 1</a></li>
-<li><a href="http://liquidmedia.ca/blog/2011/01/an-intro-to-backbone-js-part-2-controllers-and-views/">An Intro to Backbone.js: Part 2</a></li>
-<li><a href="http://liquidmedia.ca/blog/2011/02/backbone-js-part-3/">An Intro to Backbone.js: Part 3</a></li>
-<li><a href="http://www.jamesyu.org/2011/01/27/cloudedit-a-backbone-js-tutorial-by-example/">Backbone.js Tutorial with Rails Part 1</a></li>
-<li><a href="http://www.jamesyu.org/2011/02/09/backbone.js-tutorial-with-rails-part-2/">Backbone.js Tutorial with Rails Part 2</a></li>
-<li><a href="https://github.com/documentcloud/backbone/wiki/Tutorials%2C-blog-posts-and-example-sites">blog posts and example sites</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/02/03/mysql-enum-and-test-star/">Mysql ENUM and Test::*</a></h1>
+      <h1 class="entry-title">Mysql ENUM and Test::*</h1>
     
     
       <p class="meta">
@@ -453,14 +94,14 @@ only</li>
 
 <time datetime="2012-02-03T19:06:00+09:00" pubdate data-updated="true">Feb 3<span>rd</span>, 2012</time>
         
-         | <a href="/blog/2012/02/03/mysql-enum-and-test-star/#disqus_thread">Comments</a>
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h1>MySQL ENUM과 Test:: 이야기</h1>
+<div class="entry-content"><h1>MySQL ENUM과 Test:: 이야기</h1>
 
 <h2>MySQL의 ENUM type</h2>
 
@@ -1041,65 +682,16 @@ Radio 요소는 다음과 같이 단순하게 작성할 수 있습니다.</p>
 </ul>
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/02/01/silex-techtalk-02-01-2012/">Silex Techtalk - 02/01 - 2012</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">@yongbin</span></span>
 
-<time datetime="2012-02-01T17:41:00+09:00" pubdate data-updated="true">Feb 1<span>st</span>, 2012</time>
-        
-         | <a href="/blog/2012/02/01/silex-techtalk-02-01-2012/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>  오늘 있었던 Silex Techtalk 을 Storify 로 정리해보았습니다.</p>
-
-<script src="http://storify.com/jeen_lee/silex-techtalk-1.js"></script>
-
-
-<p><noscript>[<a href="http://storify.com/jeen_lee/silex-techtalk-1" target="_blank">View the story &#8220;Silex Techtalk 02/01 - 2012&#8221; on Storify</a>]</noscript></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/20/jquery-note-plugin/">Jquery Note Plugin</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -1111,434 +703,48 @@ Radio 요소는 다음과 같이 단순하게 작성할 수 있습니다.</p>
   
 
 
-<time datetime="2012-01-20T19:23:00+09:00" pubdate data-updated="true">Jan 20<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/01/20/jquery-note-plugin/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="https://lh5.googleusercontent.com/-0TusrT1pxqA/Txk9pS0yFcI/AAAAAAAAABQ/AuhNXWl4ZrA/jquey.note.png" alt="jquery note preview" /></p>
-
-<p><a href="http://aanoaa.github.com/jquery-note/">demo</a></p>
-
-<h1>jquery.note</h1>
-
-<h2>what the..</h2>
-
-<p>메모장입니다.
-상태를 저장할 수 있고요.
-상태에 따른 hook 이 많아서 유연하게 사용할 수 있고요.
-ajax 로 데이터를 주고 받아서 서버에 기록을 남길 수도 있습니다.
-회사에서 필요해서 맨들었습니다.
-여기저기 찾아봤는데 꼭 바라는게 없더라고요.</p>
-
-<h2>사용법</h2>
-
-<p>html 안에서 css, 랑 js 를 include 해주고요
-<code>$(document).ready</code> 안에 슥슥해주면 됩니다.</p>
-
-<figure class='code'><figcaption><span>[jquery.note] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;css/jquery.note.css&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;screen&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;script/jquery-1.6.2.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;script/jquery.note.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a[title=note]&quot;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">note</span><span class="p">();</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><a href="http://coffeescript.org/">coffeescript</a> 로 작성했고요, css 는
-<a href="http://sass-lang.com/">scss</a> 로 작성했습니다.</p>
-
-<h2>Hooks</h2>
-
-<figure class='code'><figcaption><span>[jquery.note hook example] [] </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;afterReveal.note&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">opts</span><span class="p">.</span><span class="nx">notes</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-</span><span class='line'>      <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/path/to&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">data</span><span class="p">.</span><span class="nx">opts</span><span class="p">.</span><span class="nx">notes</span> <span class="o">=</span> <span class="nx">res</span><span class="p">;</span>
-</span><span class='line'>        <span class="c1">// res 는 아래처럼 구성됩니다.</span>
-</span><span class='line'>        <span class="c1">// [{&quot;who&quot;:&quot;hshong&quot;,&quot;date&quot;:&quot;2012-01-20 19:23&quot;,&quot;status&quot;:&quot;open&quot;},{&quot;who&quot;:&quot;aanoaa&quot;,&quot;date&quot;:&quot;2012-01-20 19:25&quot;,&quot;note&quot;:&quot;다시하렴 처음부터&quot;}]</span>
-</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">opts</span><span class="p">.</span><span class="nx">notes</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">owner</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>notes가 보여질때 갯수를 확인한다음에, 0개라면 서버로 질의해서 노트와,
-상태정보를 받아와서 업데이트 해주고 reloading 합니다.</p>
-
-<p>옵션에 따라 달리 동작할 수 있는데, 실제로 쓸거 아니면 알 필요
-없습니다.</p>
-
-<p>사용가능한 hook 은 아래와 같습니다.</p>
-
-<ul>
-<li><code>init.note</code> 초기화할때</li>
-<li><code>afterClose.note</code> 닫히자마자</li>
-<li><code>beforeSend.note</code> ajax 보내기전에</li>
-<li><code>afterSuccess.note</code> ajax 성공하자마자</li>
-<li><code>beforeReveal.note</code> 보여지기바로전에</li>
-<li><code>afterReveal.note</code> 보여지자마자</li>
-<li><code>changeStatus.note</code> open에서 close 되는것처럼 상태가 변경되고 나면</li>
-</ul>
-
-
-<h1>See also</h1>
-
-<ul>
-<li><a href="https://github.com/aanoaa/jquery-note">jquery-note on github</a></li>
-</ul>
-
-
-<h1>마무리</h1>
-
-<p>jquery plugin 을 만들고자 하는 분이라면 한번 스윽 보셔도 괜찮을 것
-같습니다.</p>
-
-<p>javascript 잘하시는 어떤분이 제 코드를 보고 좀 까줬으면 하는 바람도
-있습니다. 제가 영어가 딸려서 미국사람한테는 그런부탁 못하거든요.</p>
-
-<p>정말 글 못쓰네요.. 어렵고요 아아아아.. 쓰다보면 나아지겟죠.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+<time datetime="2012-02-03T19:06:00+09:00" pubdate data-updated="true">Feb 3<span>rd</span>, 2012</time>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/20/octopress-usage/">Octopress Usage</a></h1>
-    
-    
-      <p class="meta">
-        
 
-
-
-
-
-
-
-
+<span class="categories">
   
+    <a class='category' href='/blog/categories/mysql/'>mysql</a>, <a class='category' href='/blog/categories/test/'>test</a>
+  
+</span>
 
 
-<time datetime="2012-01-20T01:44:00+09:00" pubdate data-updated="true">Jan 20<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/01/20/octopress-usage/#disqus_thread">Comments</a>
-        
-      </p>
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><h1>octopress 에서 어떻게 글을 쓸 것인가?</h1>
-
-<h2>ruby install</h2>
-
-<pre><code>$ rvm install 1.9.2 &amp;&amp; rvm --default use 1.9.2
-$ gem install bundler
-</code></pre>
-
-<p>rvm 은 ruby 의 <a href="http://perlbrew.pl/">perlbrew</a> 고요,
-bundler는
-<a href="http://search.cpan.org/~miyagawa/carton-v0.9.3/lib/Carton.pod">Carton</a>
-입니다.</p>
-
-<h2>git clone &amp;&amp; bundle install</h2>
-
-<p>저장소의 remote 정보는 아래와 같습니다.</p>
-
-<pre><code>$ git remote -v
-octopress   git://github.com/imathis/octopress.git (fetch)
-octopress   git://github.com/imathis/octopress.git (push)
-origin  git@github.com:silexkr/silexkr.github.com.git (fetch)
-origin  git@github.com:silexkr/silexkr.github.com.git (push)
-</code></pre>
-
-<p>살렉스 여러분은 write 권한이 있습니다. clone 받으세여.</p>
-
-<pre><code>$ git clone git@github.com:silexkr/silexkr.github.com.git
-</code></pre>
-
-<p>그리고 의존모듈을 설치 합니다. &amp;&amp; 글을 쓰기 위해선 <code>source</code> 브랜치를 사용합니다.</p>
-
-<pre><code>$ cd silexkr.github.com.git/
-$ git checkout source
-$ bundle install
-</code></pre>
-
-<h2>rake setup_github_pages</h2>
-
-<p>write 할 수 있는 repository 주소를 octopress 에 등록해줘야 합니다.</p>
-
-<pre><code>$ rake setup_github_pages
-Enter the read/write url for your repository: git@github.com:silexkr/silexkr.github.com.git
-</code></pre>
-
-<h2>rake new_post</h2>
-
-<p>새글을 쓰기 위해선 직접 파일을 맨들어줘도 되지만 rake 유틸리티를
-이용하세요. 편합니다. 요렇게요.</p>
-
-<pre><code>$ rake new_post["Octopress usage"]
-mkdir -p source/_posts
-Creating new post: source/_posts/2012-01-20-octopress-usage.markdown
-</code></pre>
-
-<p><code>Octopress usage</code> 가 제목이고요,
-<code>source/_posts/2012-01-20-octopress-usage.markdown</code> 파일이
-만들어졌습니다.</p>
-
-<h2>메타정보입력</h2>
-
-<p><code>source/_posts/2012-01-20-octopress-usage.markdown</code> 파일을 열어보면 젤
-위에 요렇게 나옵니다.</p>
-
-<pre><code>---
-layout: post
-title: "Octopress usage"
-date: 2012-01-20 01:44
-comments: true
-categories:
----
-</code></pre>
-
-<p>저희는 여러명이서 쓸것이기 때문에 <code>author</code> 정보도 입력하면 좋습니다.
-default 는 <strong>Silex</strong> 입니다.</p>
-
-<p>카테고리는 여러개를 입력할 수
-있습니다. <a href="http://octopress.org/docs/blogging/">Blogging Basics</a> 에
-좋은 예가 있습니다.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># One category
-</span><span class='line'>categories: Sass
-</span><span class='line'>
-</span><span class='line'># Multiple categories example 1
-</span><span class='line'>categories: [CSS3, Sass, Media Queries]
-</span><span class='line'>
-</span><span class='line'># Multiple categories example 2
-</span><span class='line'>categories:
-</span><span class='line'>- CSS3
-</span><span class='line'>- Sass
-</span><span class='line'>- Media Queries</span></code></pre></td></tr></table></div></figure>
-
-
-<p>저는 이글을 쓰면서 요렇게 했습니다.</p>
-
-<pre><code>---
-author: 홍형석
-layout: post
-title: "Octopress usage"
-date: 2012-01-20 01:44
-comments: true
-categories: octopress
----
-</code></pre>
-
-<h2>글작성</h2>
-
-<p>markdown 문법을 따릅니다.
-<a href="http://octopress.org/docs/blogging/plugins/">Plugins</a>를 활용해서
-이미지도 옇고 코드도 옇습니다.</p>
-
-<h2>local 에서 확인</h2>
-
-<pre><code>$ rake preview
-Starting to watch source with Jekyll and Compass. Starting Rack on port 4000
-~~~ 중략 ~~~
-&gt;&gt;&gt; Compass is polling for changes. Press Ctrl-C to Stop.
-</code></pre>
-
-<p>문서보면 <code>rake watch</code> 도 있는데여, <code>scss</code>, <code>css</code> 건드릴거 아니면
-안띄워줘도 됩니다.</p>
-
-<h2>rake deploy</h2>
-
-<p>로컬에서 확인이 완료 되었으면, deploy 합니다.</p>
-
-<pre><code>$ rake deploy
-</code></pre>
-
-<p>github 에서 성공메세지를 받으면 <a href="http://silexkr.github.com/">silexkr.github.com</a> 에서 바로
-확인할 수 있습니다.(대부분 바로 반영되더라고요)</p>
-
-<h2>git add, commit, push</h2>
-
-<p>deploy 와는 별도로 원본글을 커밋하고 이력을 관리합니다.</p>
-
-<pre><code>$ git add .
-$ git commit -m "posting Octopress usage"
-$ git push origin source
-</code></pre>
-
-<p><em>주의</em>할게 있는데요. <code>master</code> 브랜치가 아니라 <code>source</code> 로 push 해야
- 합니다.</p>
-
-<p><code>master</code>는 원본이 변환된 static 파일들이 모여 서비스 되는 브랜치고요,
-<code>source</code>에서 원본을 관리합니다.</p>
-
-<p>생각해보니까 <code>master</code>는 어차피 deploy 할때 HEAD 라서 그냥 push 해도
-되겠군여.</p>
-
-<h1>이제 뭘 하징?</h1>
-
-<p>네 글을 써주세요.</p>
-
-<h1>See also</h1>
-
-<ul>
-<li><a href="http://octopress.org/docs/blogging/">Blogging Basics</a></li>
-</ul>
-
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://silexkr.github.com/blog/2012/02/03/mysql-enum-and-test-star/" data-via="" data-counturl="http://silexkr.github.com/blog/2012/02/03/mysql-enum-and-test-star/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
 </div>
-  
-  
 
-
-    </article>
-  
-  
-    <article>
+    
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/19/hello-world/">Hello World</a></h1>
-    
-    
-      <p class="meta">
-        
+        <a class="basic-alignment left" href="/blog/2012/02/01/silex-techtalk-02-01-2012/" title="Previous Post: Silex Techtalk - 02/01 - 2012">&laquo; Silex Techtalk - 02/01 - 2012</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/02/17/backbone-dot-js/" title="next Post: backbone.js">backbone.js &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
 
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-19T17:39:00+09:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/01/19/hello-world/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1>소개</h1>
-
-<p>건대입구에서 소프트웨어 장사하는 Silex(일명 용키)입니다.</p>
-
-<h1>멤버</h1>
-
-<ul>
-<li><a href="https://twitter.com/y0ngbin/">유용빈</a>
-용사장이라 불리우고요, 사장입니다. 맥북프로 씁니다.</li>
-<li><a href="https://twitter.com/keedi/">김도형</a>
-거침없이 배우는 펄 번역했고요, vaio 에 arch linux 씁니다.</li>
-<li><a href="https://twitter.com/mintegrals/">이민선</a>
-젊은 여자고요, 진님이 쓰다버린 흰둥이 맥북프로 씁니다.</li>
-<li><a href="https://twitter.com/aanoaa/">홍형석</a>
-emacs 쓰고요, 띵크패드에 우분투 씁니다.</li>
-<li><a href="https://twitter.com/jeen_lee/">이종진</a>
-일본 IT 업체에서 일하다 온 유부남이고요, 일제 맥북에어 씁니다.</li>
-<li><a href="https://twitter.com/rumidier/">조한영</a>
-도형님 문하생입니다.(직원은 아닌 것 같습니다.) 듣보 노트북에 우분투
-씁니다.</li>
-</ul>
-
-
-<p>이중에 <a href="http://search.cpan.org/">CPAN</a> Author 가 4명 입니다.</p>
-
-<ul>
-<li><a href="http://search.cpan.org/~jeen/">jeen</a></li>
-<li><a href="http://search.cpan.org/~keedi/">keedi</a></li>
-<li><a href="http://search.cpan.org/~aanoaa/">aanoaa</a></li>
-<li><a href="http://search.cpan.org/~yongbin/">yongbin</a></li>
-</ul>
-
-
-<h1>하는 일</h1>
-
-<p>지금은 perl로 private한 웹서비스 맨들고 있습니다. 웹서비스말고 다른
-것도 할 수 있습니다. 자세한건 용사장님이 언젠가 포스팅 하지 않을까
-그래 생각하고 잇습니다.</p>
-
-<h1>See also</h1>
-
-<p><a href="http://www.facebook.com/silexkr">silexkr - facebook</a></p>
-
-<p><img src="https://lh4.googleusercontent.com/-luyngRUk4Dg/TxfuqnNyyYI/AAAAAAAAABI/2VkyXnMdG74/s400/silex_except_aanoaa.jpg" alt="we are silex" /></p>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-  
-  
+  </section>
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -1576,6 +782,7 @@ emacs 쓰고요, 띵크패드에 우분투 씁니다.</li>
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -1590,7 +797,10 @@ emacs 쓰고요, 띵크패드에 우분투 씁니다.</li>
       var disqus_shortname = 'silexblog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://silexkr.github.com/blog/2012/02/03/mysql-enum-and-test-star/';
+        var disqus_url = 'http://silexkr.github.com/blog/2012/02/03/mysql-enum-and-test-star/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
