@@ -45,7 +45,7 @@ categories: [backbone.js, require.js]
 
 ## 돈워리 ##
 
-http://documentcloud.github.com/backbone/#examples
+[http://documentcloud.github.com/backbone/#examples](http://documentcloud.github.com/backbone/#examples)
 
 - FourSuare
 - LinkedIn
@@ -71,7 +71,8 @@ http://documentcloud.github.com/backbone/#examples
 RESTful 하게 구현되어야 합니다. [backbone.js][backbone.js]의 `model`과
 `collection`은 url 규약을 가지고 있습니다. 
 
-```http://documentcloud.github.com/backbone/#Sync
+```
+# http://documentcloud.github.com/backbone/#Sync
 The default sync handler maps CRUD to REST like so:
 
 create → POST   /collection
@@ -89,13 +90,15 @@ delete → DELETE   /collection/id
 마찬가집니다. 이때는 추가로 `JSON.stringify(model)` 을 POST body 에
 넣고, `Content-type: application/json` 헤더를 포함합니다.
 
-```part of request header
+```
+# part of request header
 Accept	application/json, text/javascript, */*; q=0.01
 Content-Type	application/json; charset=UTF-8
 X-Requested-With	XMLHttpRequest
 ```
 
-```request body
+```
+# request body
 {"qid":"1","status":"reopen","comment":""}
 ```
 
@@ -166,13 +169,20 @@ class MyView extends Backbone.View
 
 {% gist 1868873 %}
 
-## 결론 ##
+## 결론 및 느낀점 ##
 
-- 기존꺼 바뀐거..100줄 정도 줄어듬
-- js 가 웹서비스의 일부분이 되어버림
+- jquery plugin 으로 작성했을때 보다 복잡성은 줄어들고 코드의 양은 2/3
+  정도로 줄어듬
+- 확장이 용이 해졌음, 더 복잡한 UI 에 대한 자신감 up
+- js 가 웹애플리케이션의 일부분이 되어버림
 - jquery plugin 과 달리 재사용을 쉽게 못함
 - 서버 구현에 있어서 sync 를 위해서 RESTful하게 설계되어야함
 - rails 후렌들리
+- perl 로도 요런거 graceful 하게 할 수 있음
+- 요즘들어 ruby 에 많은 관심이 감
+- JST(Javascript Template)를 사용하면 more graceful, 허놔 그것은 rails
+  only
+- template engine 바꿔 낄 수 있음
 
 ## See also ##
 
@@ -184,8 +194,7 @@ class MyView extends Backbone.View
 - [An Intro to Backbone.js: Part 3](http://liquidmedia.ca/blog/2011/02/backbone-js-part-3/)
 - [Backbone.js Tutorial with Rails Part 1](http://www.jamesyu.org/2011/01/27/cloudedit-a-backbone-js-tutorial-by-example/)
 - [Backbone.js Tutorial with Rails Part 2](http://www.jamesyu.org/2011/02/09/backbone.js-tutorial-with-rails-part-2/)
-- https://github.com/documentcloud/backbone/wiki/Tutorials%2C-blog-posts-and-example-sites
-
+- [blog posts and example sites](https://github.com/documentcloud/backbone/wiki/Tutorials%2C-blog-posts-and-example-sites)
 
 [backbone.js]: http://documentcloud.github.com/backbone/
 [Trello]: https://trello.com/
