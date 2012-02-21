@@ -1,0 +1,188 @@
+---
+author: Hyungsuk Hong
+layout: post
+title: "IRC bot"
+date: 2012-02-21 10:06
+comments: true
+categories: hubot, hongbot, CoffeeScript, AnyEvent
+---
+
+IRC 에는 많은 봇들이 살고 있습니다.
+
+봇은 일반적으로 regex rule과 callback을 등록해두고 해당하는 대화
+내용이 나오면 callback 이 실행되는 구조를 가집니다.
+
+여기서는 두개의 오픈소스 봇을 소개하고 어떻게 deploy 할 것인지에 대해
+다룹니다.
+
+## Hongbot ##
+
+[AnyEvent][AnyEvent] 모듈 기반이고 perl로 만들어졌습니다.
+
+[Morris][Morris] -> [Horris][Horris] -> [Hongbot][Hongbot] 의 계보를
+가지고 있습니다. plugin 파일을 만들어서 확장할 수 있습니다.
+
+### plugins ###
+
+- Ascii
+- Eval
+- Hello
+- Mac
+- Map
+- MetaCPAN
+- Mustache
+- Shorten
+- Twitter
+- Youtube
+
+### run ###
+
+```bash
+$ git clone git@github.com:aanoaa/Hongbot.git
+$ cd Hongbot/
+$ carton install # Carton 이 설치되어 잇어야..
+$ vim conf/hongbot.conf # 서버, 채널, password 등을 변경해야..
+$ ./run
+```
+
+## hubot ##
+
+[Github][Github]에서 공개한 CoffeeScript 로 쓰여진 node.js 기반의 bot
+입니다. core인 [hubot][hubot] 이 있고 [hubot-scripts][hubot-scripts]
+를 통해 확장 가능합니다. adapter 를 설정해서 irc 뿐만아니라 campfire,
+gtalk 에서도 사용가능 합니다. 물론 adapter 또한 확장 가능 합니다.
+
+### scripts ###
+
+[hubot-scripts catalog][hubot-scripts catalog]
+
+### 지속가능한 운영의 묘 ###
+
+[hubot][hubot]의 README 를 보면 tarball 을 Download 받아서 하라고
+하는데, 그렇게 하면 npm을 통해서 [hubot-scripts][npm-hubot-scripts]
+가 설치되기 때문에 자신의 확장 scripts 를 사용할 수 없습니다.
+
+해서,
+
+```bash
+$ git clone https://github.com/github/hubot.git
+$ git clone https://github.com/github/hubot-scripts.git
+$ cd hubot-scripts/
+$ npm install # npm 이 설치되어 잇어야 합니다.
+$ cd ../
+$ cd hubot/
+$ mkdir /path/to/deploy/hubot
+$ ./bin/hubot -c /path/to/deploy/hubot
+$ cd /path/to/deploy/hubot
+$ npm install
+$ cd node_modules
+$ rm -rf hubot-scripts/ # npm의 hubot-scripts 대신에 clone 받은 hubot-scripts 를 사용합니다.
+$ ln -s /path/to/hubot-scripts hubot-scripts # 아까 clone 받은 repo
+$ cd ../
+$ vim hubot-scripts.json
+    # /path/to/hubot-scripts/src/scripts/*.coffee 사용가능
+    # ["foo.coffee", "bar.coffee"] 등등..
+$ ./bin/hubot
+```
+
+[hubot-scripts][hubot-scripts]를 fork 해서 사용하는게 유리합니다.
+github:hubot-scripts 를 remote 로 등록해서 꾸준히 추가되는 script를
+쓸수도 있고 내가 작성한 script도 쓸 수 있으니까여
+
+## plugin, script 의 단순함 비교 ##
+
+### hongbot Eval.pm ###
+
+```perl
+package Hongbot::Plugin::Eval;
+use URI;
+use JSON;
+use Moose;
+use AnyEvent::HTTP;
+use namespace::autoclean;
+extends 'Hongbot::Plugin';
+with 'MooseX::Role::Pluggable::Plugin';
+
+has uri => (
+    is => 'ro',
+    isa => 'URI',
+    default => sub { URI->new("http://api.dan.co.jp/lleval.cgi") },
+);
+
+has prefix => (is => 'ro', isa => 'Str', default => "#!/usr/bin/perl\n");
+
+override 'usage' => sub { sprintf("%s: eval <PERL_CODE>", $_[0]->parent->name) };
+override 'regex' => sub { qr/^eval\s+/i };
+
+sub respond {
+    my ($self, $cl, $channel, $nickname, $msg) = @_;
+
+    $msg = $self->rm_prefix($self->regex, $msg);
+    return unless $msg;
+
+    $msg = $self->prefix . $msg;
+    $self->uri->query_form(s => $msg);
+    my $guard; $guard = http_get $self->uri, sub {
+        undef $guard;
+        my ($body, $headers) = @_;
+        if ($headers->{Status} =~ m/^2/) {
+            my $scalar = JSON::from_json($body);
+            my @eval;
+            map { push @eval, "$_: $scalar->{$_}" } qw/lang status stderr stdout syscalls time/;
+            $self->to_channel($cl, $channel, @eval);
+        } else {
+            $self->to_channel($cl, $channel, sprintf("httpCode: %d", $headers->{Status}));
+        }
+    };
+}
+
+__PACKAGE__->meta->make_immutable;
+
+1;
+```
+
+### hubot eval.coffee ###
+
+```coffeescript
+# evaluate code.
+#
+# eval me <lang> <code> - evaluate <code> and show the result.
+
+module.exports = (robot) ->
+  robot.respond /eval( me)? ([^ ]+) (.+)/i, (msg) ->
+    msg
+      .http("http://api.dan.co.jp/lleval.cgi")
+      .query(s: "#!/usr/bin/#{msg.match[2]}\n#{msg.match[3]}")
+      .get() (err, res, body) ->
+        out = JSON.parse(body)
+        msg.send if out.stderr then out.stderr else out.stdout
+```
+
+네 [hubot][hubot] 이 훨씬 단순합니다.
+core 의 설계가 더 유연하고 잘되어 있어서 그렇다고 생각합니다.
+[Hongbot][Hongbot]은 저혼자 하고 [hubot][hubot]은 세계의 여러 해커들이
+참여하는 프로젝트니까 뭐 비교하면 저만
+초라해집니다. [Hongbot][Hongbot]의 core 를 업그레이드 시켜서
+[hubot][hubot] 만큼 단순하게 plugin 을 작성할 수 있게 하면 좋은 plugin
+들이 많이 생겨날 것으로 생각합니다. repo 와 deploy 디렉토리를 따로
+둘수 있게 만든 점 또한 [hubot][hubot]++ 입니다. 배울게 참 많습니다.
+
+## 결론 ##
+
+여보 아버님채널에 bot 한마리 놔드려야 겠어요
+
+## See also ##
+
+- [hubot Scripts Explained][hubot Scripts Explained]
+
+[Morris]: http://search.cpan.org/~dmaki/Morris-0.01000_01/lib/Morris.pm
+[Horris]: http://search.cpan.org/~aanoaa/Horris-v0.1.2/lib/Horris.pm
+[Hongbot]: https://github.com/aanoaa/Hongbot
+[hubot]: https://github.com/github/hubot
+[hubot-scripts]: https://github.com/github/hubot-scripts
+[AnyEvent]: http://search.cpan.org/~mlehmann/AnyEvent-6.14/lib/AnyEvent.pm
+[hubot Scripts Explained]: http://theprogrammingbutler.com/blog/archives/2011/10/28/hubot-scripts-explained/
+[Github]: https://github.com/
+[hubot-scripts catalog]: http://hubot-script-catalog.herokuapp.com/
+[npm-hubot-scripts]: http://search.npmjs.org/#/hubot-scripts
+[CPAN]: http://search.cpan.org/
