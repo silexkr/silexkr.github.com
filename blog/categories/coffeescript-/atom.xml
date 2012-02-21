@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: CoffeeScript, | Silex Blog]]></title>
+  <link href="http://silexkr.github.com/blog/categories/coffeescript-/atom.xml" rel="self"/>
+  <link href="http://silexkr.github.com/"/>
+  <updated>2012-02-21T11:55:46+09:00</updated>
+  <id>http://silexkr.github.com/</id>
+  <author>
+    <name><![CDATA[Silex]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[IRC bot]]></title>
+    <link href="http://silexkr.github.com/blog/2012/02/21/irc-bot/"/>
+    <updated>2012-02-21T10:06:00+09:00</updated>
+    <id>http://silexkr.github.com/blog/2012/02/21/irc-bot</id>
+    <content type="html"><![CDATA[<p>IRC 에는 많은 봇들이 살고 있습니다.</p>
+
+<p>봇은 일반적으로 regex rule과 callback을 등록해두고 해당하는 대화
+내용이 나오면 callback 이 실행되는 구조를 가집니다.</p>
+
+<p>여기서는 두개의 오픈소스 봇을 소개하고 어떻게 deploy 할 것인지에 대해
+다룹니다.</p>
+
+<h2>Hongbot</h2>
+
+<p><a href="http://search.cpan.org/~mlehmann/AnyEvent-6.14/lib/AnyEvent.pm">AnyEvent</a> 모듈 기반이고 perl로 만들어졌습니다.</p>
+
+<p><a href="http://search.cpan.org/~dmaki/Morris-0.01000_01/lib/Morris.pm">Morris</a> -> <a href="http://search.cpan.org/~aanoaa/Horris-v0.1.2/lib/Horris.pm">Horris</a> -> <a href="https://github.com/aanoaa/Hongbot">Hongbot</a> 의 계보를
+가지고 있습니다. plugin 파일을 만들어서 확장할 수 있습니다.</p>
+
+<h3>plugins</h3>
+
+<ul>
+<li>Ascii</li>
+<li>Eval</li>
+<li>Hello</li>
+<li>Mac</li>
+<li>Map</li>
+<li>MetaCPAN</li>
+<li>Mustache</li>
+<li>Shorten</li>
+<li>Twitter</li>
+<li>Youtube</li>
+</ul>
+
+
+<h3>run</h3>
+
+<p><code>bash
+$ git clone git@github.com:aanoaa/Hongbot.git
+$ cd Hongbot/
+$ carton install # Carton 이 설치되어 잇어야..
+$ vim conf/hongbot.conf # 서버, 채널, password 등을 변경해야..
+$ ./run
+</code></p>
+
+<h2>hubot</h2>
+
+<p><a href="https://github.com/">Github</a>에서 공개한 CoffeeScript 로 쓰여진 node.js 기반의 bot
+입니다. core인 <a href="https://github.com/github/hubot">hubot</a> 이 있고 <a href="https://github.com/github/hubot-scripts">hubot-scripts</a>
+를 통해 확장 가능합니다. adapter 를 설정해서 irc 뿐만아니라 campfire,
+gtalk 에서도 사용가능 합니다. 물론 adapter 또한 확장 가능 합니다.</p>
+
+<h3>scripts</h3>
+
+<p><a href="http://hubot-script-catalog.herokuapp.com/">hubot-scripts catalog</a></p>
+
+<h3>지속가능한 운영의 묘</h3>
+
+<p><a href="https://github.com/github/hubot">hubot</a>의 README 를 보면 tarball 을 Download 받아서 하라고
+하는데, 그렇게 하면 npm을 통해서 <a href="http://search.npmjs.org/#/hubot-scripts">hubot-scripts</a>
+가 설치되기 때문에 자신의 확장 scripts 를 사용할 수 없습니다.</p>
+
+<p>해서,</p>
+
+<p>```bash
+$ git clone https://github.com/github/hubot.git
+$ git clone https://github.com/github/hubot-scripts.git
+$ cd hubot-scripts/
+$ npm install # npm 이 설치되어 잇어야 합니다.
+$ cd ../
+$ cd hubot/
+$ mkdir /path/to/deploy/hubot
+$ ./bin/hubot -c /path/to/deploy/hubot
+$ cd /path/to/deploy/hubot
+$ npm install
+$ cd node_modules
+$ rm -rf hubot-scripts/ # npm의 hubot-scripts 대신에 clone 받은 hubot-scripts 를 사용합니다.
+$ ln -s /path/to/hubot-scripts hubot-scripts # 아까 clone 받은 repo
+$ cd ../
+$ vim hubot-scripts.json</p>
+
+<pre><code># /path/to/hubot-scripts/src/scripts/*.coffee 사용가능
+# ["foo.coffee", "bar.coffee"] 등등..
+</code></pre>
+
+<p>$ ./bin/hubot
+```</p>
+
+<p><a href="https://github.com/github/hubot-scripts">hubot-scripts</a>를 fork 해서 사용하는게 유리합니다.
+github:hubot-scripts 를 remote 로 등록해서 꾸준히 추가되는 script를
+쓸수도 있고 내가 작성한 script도 쓸 수 있으니까여</p>
+
+<h2>plugin, script 의 단순함 비교</h2>
+
+<h3>hongbot Eval.pm</h3>
+
+<p>```perl
+package Hongbot::Plugin::Eval;
+use URI;
+use JSON;
+use Moose;
+use AnyEvent::HTTP;
+use namespace::autoclean;
+extends 'Hongbot::Plugin';
+with 'MooseX::Role::Pluggable::Plugin';</p>
+
+<p>has uri => (</p>
+
+<pre><code>is =&gt; 'ro',
+isa =&gt; 'URI',
+default =&gt; sub { URI-&gt;new("http://api.dan.co.jp/lleval.cgi") },
+</code></pre>
+
+<p>);</p>
+
+<p>has prefix => (is => 'ro', isa => 'Str', default => "#!/usr/bin/perl\n");</p>
+
+<p>override 'usage' => sub { sprintf("%s: eval <PERL_CODE>", $_[0]->parent->name) };
+override 'regex' => sub { qr/<sup>eval\s+/i</sup> };</p>
+
+<p>sub respond {</p>
+
+<pre><code>my ($self, $cl, $channel, $nickname, $msg) = @_;
+
+$msg = $self-&gt;rm_prefix($self-&gt;regex, $msg);
+return unless $msg;
+
+$msg = $self-&gt;prefix . $msg;
+$self-&gt;uri-&gt;query_form(s =&gt; $msg);
+my $guard; $guard = http_get $self-&gt;uri, sub {
+    undef $guard;
+    my ($body, $headers) = @_;
+    if ($headers-&gt;{Status} =~ m/^2/) {
+        my $scalar = JSON::from_json($body);
+        my @eval;
+        map { push @eval, "$_: $scalar-&gt;{$_}" } qw/lang status stderr stdout syscalls time/;
+        $self-&gt;to_channel($cl, $channel, @eval);
+    } else {
+        $self-&gt;to_channel($cl, $channel, sprintf("httpCode: %d", $headers-&gt;{Status}));
+    }
+};
+</code></pre>
+
+<p>}</p>
+
+<p><strong>PACKAGE</strong>->meta->make_immutable;</p>
+
+<p>1;
+```</p>
+
+<h3>hubot eval.coffee</h3>
+
+<p>```coffeescript</p>
+
+<h1>evaluate code.</h1>
+
+<p>#</p>
+
+<h1>eval me <lang> <code> - evaluate <code> and show the result.</h1>
+
+<p>module.exports = (robot) ->
+  robot.respond /eval( me)? ([^ ]+) (.+)/i, (msg) -></p>
+
+<pre><code>msg
+  .http("http://api.dan.co.jp/lleval.cgi")
+  .query(s: "#!/usr/bin/#{msg.match[2]}\n#{msg.match[3]}")
+  .get() (err, res, body) -&gt;
+    out = JSON.parse(body)
+    msg.send if out.stderr then out.stderr else out.stdout
+</code></pre>
+
+<p>```</p>
+
+<p>네 <a href="https://github.com/github/hubot">hubot</a> 이 훨씬 단순합니다.
+core 의 설계가 더 유연하고 잘되어 있어서 그렇다고 생각합니다.
+<a href="https://github.com/aanoaa/Hongbot">Hongbot</a>은 저혼자 하고 <a href="https://github.com/github/hubot">hubot</a>은 세계의 여러 해커들이
+참여하는 프로젝트니까 뭐 비교하면 저만
+초라해집니다. <a href="https://github.com/aanoaa/Hongbot">Hongbot</a>의 core 를 업그레이드 시켜서
+<a href="https://github.com/github/hubot">hubot</a> 만큼 단순하게 plugin 을 작성할 수 있게 하면 좋은 plugin
+들이 많이 생겨날 것으로 생각합니다. repo 와 deploy 디렉토리를 따로
+둘수 있게 만든 점 또한 <a href="https://github.com/github/hubot">hubot</a>++ 입니다. 배울게 참 많습니다.</p>
+
+<h2>결론</h2>
+
+<p>여보 아버님채널에 bot 한마리 놔드려야 겠어요</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="http://theprogrammingbutler.com/blog/archives/2011/10/28/hubot-scripts-explained/">hubot Scripts Explained</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

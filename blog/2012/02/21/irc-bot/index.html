@@ -1,0 +1,513 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>IRC bot - Silex Blog</title>
+  <meta name="author" content="Silex">
+
+  
+  <meta name="description" content="IRC 에는 많은 봇들이 살고 있습니다. 봇은 일반적으로 regex rule과 callback을 등록해두고 해당하는 대화
+내용이 나오면 callback 이 실행되는 구조를 가집니다. 여기서는 두개의 오픈소스 봇을 소개하고 어떻게 deploy 할 것인지에 대해
+다룹니다 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://silexkr.github.com/blog/2012/02/21/irc-bot">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script src="http://platform.twitter.com/anywhere.js?id=jeen_lee&v=1" type="text/javascript"></script>
+  <script type="text/javascript">
+    twttr.anywhere(function (T) {
+      T.hovercards();
+    });
+  </script>
+  <link href="/atom.xml" rel="alternate" title="Silex Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Silex Blog</a></h1>
+  
+    <h2>What the silex.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:silexkr.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">IRC Bot</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-21T10:06:00+09:00" pubdate data-updated="true">Feb 21<span>st</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>IRC 에는 많은 봇들이 살고 있습니다.</p>
+
+<p>봇은 일반적으로 regex rule과 callback을 등록해두고 해당하는 대화
+내용이 나오면 callback 이 실행되는 구조를 가집니다.</p>
+
+<p>여기서는 두개의 오픈소스 봇을 소개하고 어떻게 deploy 할 것인지에 대해
+다룹니다.</p>
+
+<h2>Hongbot</h2>
+
+<p><a href="http://search.cpan.org/~mlehmann/AnyEvent-6.14/lib/AnyEvent.pm">AnyEvent</a> 모듈 기반이고 perl로 만들어졌습니다.</p>
+
+<p><a href="http://search.cpan.org/~dmaki/Morris-0.01000_01/lib/Morris.pm">Morris</a> -> <a href="http://search.cpan.org/~aanoaa/Horris-v0.1.2/lib/Horris.pm">Horris</a> -> <a href="https://github.com/aanoaa/Hongbot">Hongbot</a> 의 계보를
+가지고 있습니다. plugin 파일을 만들어서 확장할 수 있습니다.</p>
+
+<h3>plugins</h3>
+
+<ul>
+<li>Ascii</li>
+<li>Eval</li>
+<li>Hello</li>
+<li>Mac</li>
+<li>Map</li>
+<li>MetaCPAN</li>
+<li>Mustache</li>
+<li>Shorten</li>
+<li>Twitter</li>
+<li>Youtube</li>
+</ul>
+
+
+<h3>run</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git clone git@github.com:aanoaa/Hongbot.git
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>Hongbot/
+</span><span class='line'><span class="nv">$ </span>carton install <span class="c"># Carton 이 설치되어 잇어야..</span>
+</span><span class='line'><span class="nv">$ </span>vim conf/hongbot.conf <span class="c"># 서버, 채널, password 등을 변경해야..</span>
+</span><span class='line'><span class="nv">$ </span>./run
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>hubot</h2>
+
+<p><a href="https://github.com/">Github</a>에서 공개한 CoffeeScript 로 쓰여진 node.js 기반의 bot
+입니다. core인 <a href="https://github.com/github/hubot">hubot</a> 이 있고 <a href="https://github.com/github/hubot-scripts">hubot-scripts</a>
+를 통해 확장 가능합니다. adapter 를 설정해서 irc 뿐만아니라 campfire,
+gtalk 에서도 사용가능 합니다. 물론 adapter 또한 확장 가능 합니다.</p>
+
+<h3>scripts</h3>
+
+<p><a href="http://hubot-script-catalog.herokuapp.com/">hubot-scripts catalog</a></p>
+
+<h3>지속가능한 운영의 묘</h3>
+
+<p><a href="https://github.com/github/hubot">hubot</a>의 README 를 보면 tarball 을 Download 받아서 하라고
+하는데, 그렇게 하면 npm을 통해서 <a href="http://search.npmjs.org/#/hubot-scripts">hubot-scripts</a>
+가 설치되기 때문에 자신의 확장 scripts 를 사용할 수 없습니다.</p>
+
+<p>해서,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git clone https://github.com/github/hubot.git
+</span><span class='line'><span class="nv">$ </span>git clone https://github.com/github/hubot-scripts.git
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>hubot-scripts/
+</span><span class='line'><span class="nv">$ </span>npm install <span class="c"># npm 이 설치되어 잇어야 합니다.</span>
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd</span> ../
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>hubot/
+</span><span class='line'><span class="nv">$ </span>mkdir /path/to/deploy/hubot
+</span><span class='line'><span class="nv">$ </span>./bin/hubot -c /path/to/deploy/hubot
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd</span> /path/to/deploy/hubot
+</span><span class='line'><span class="nv">$ </span>npm install
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>node_modules
+</span><span class='line'><span class="nv">$ </span>rm -rf hubot-scripts/ <span class="c"># npm의 hubot-scripts 대신에 clone 받은 hubot-scripts 를 사용합니다.</span>
+</span><span class='line'><span class="nv">$ </span>ln -s /path/to/hubot-scripts hubot-scripts <span class="c"># 아까 clone 받은 repo</span>
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd</span> ../
+</span><span class='line'><span class="nv">$ </span>vim hubot-scripts.json
+</span><span class='line'>    <span class="c"># /path/to/hubot-scripts/src/scripts/*.coffee 사용가능</span>
+</span><span class='line'>    <span class="c"># [&quot;foo.coffee&quot;, &quot;bar.coffee&quot;] 등등..</span>
+</span><span class='line'><span class="nv">$ </span>./bin/hubot
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="https://github.com/github/hubot-scripts">hubot-scripts</a>를 fork 해서 사용하는게 유리합니다.
+github:hubot-scripts 를 remote 로 등록해서 꾸준히 추가되는 script를
+쓸수도 있고 내가 작성한 script도 쓸 수 있으니까여</p>
+
+<h2>plugin, script 의 단순함 비교</h2>
+
+<h3>hongbot Eval.pm</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="nb">package</span> <span class="nn">Hongbot::Plugin::</span><span class="n">Eval</span><span class="p">;</span>
+</span><span class='line'><span class="k">use</span> <span class="n">URI</span><span class="p">;</span>
+</span><span class='line'><span class="k">use</span> <span class="n">JSON</span><span class="p">;</span>
+</span><span class='line'><span class="k">use</span> <span class="n">Moose</span><span class="p">;</span>
+</span><span class='line'><span class="k">use</span> <span class="nn">AnyEvent::</span><span class="n">HTTP</span><span class="p">;</span>
+</span><span class='line'><span class="k">use</span> <span class="nn">namespace::</span><span class="n">autoclean</span><span class="p">;</span>
+</span><span class='line'><span class="n">extends</span> <span class="s">&#39;Hongbot::Plugin&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="n">with</span> <span class="s">&#39;MooseX::Role::Pluggable::Plugin&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">has</span> <span class="n">uri</span> <span class="o">=&gt;</span> <span class="p">(</span>
+</span><span class='line'>    <span class="n">is</span> <span class="o">=&gt;</span> <span class="s">&#39;ro&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">isa</span> <span class="o">=&gt;</span> <span class="s">&#39;URI&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">default</span> <span class="o">=&gt;</span> <span class="k">sub </span><span class="p">{</span> <span class="n">URI</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">(</span><span class="s">&quot;http://api.dan.co.jp/lleval.cgi&quot;</span><span class="p">)</span> <span class="p">},</span>
+</span><span class='line'><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">has</span> <span class="n">prefix</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="n">is</span> <span class="o">=&gt;</span> <span class="s">&#39;ro&#39;</span><span class="p">,</span> <span class="n">isa</span> <span class="o">=&gt;</span> <span class="s">&#39;Str&#39;</span><span class="p">,</span> <span class="n">default</span> <span class="o">=&gt;</span> <span class="s">&quot;#!/usr/bin/perl\n&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">override</span> <span class="s">&#39;usage&#39;</span> <span class="o">=&gt;</span> <span class="k">sub </span><span class="p">{</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s">&quot;%s: eval &lt;PERL_CODE&gt;&quot;</span><span class="p">,</span> <span class="nv">$_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">)</span> <span class="p">};</span>
+</span><span class='line'><span class="n">override</span> <span class="s">&#39;regex&#39;</span> <span class="o">=&gt;</span> <span class="k">sub </span><span class="p">{</span> <span class="sx">qr/^eval\s+/</span><span class="n">i</span> <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">sub </span><span class="nf">respond</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">my</span> <span class="p">(</span><span class="nv">$self</span><span class="p">,</span> <span class="nv">$cl</span><span class="p">,</span> <span class="nv">$channel</span><span class="p">,</span> <span class="nv">$nickname</span><span class="p">,</span> <span class="nv">$msg</span><span class="p">)</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nv">$msg</span> <span class="o">=</span> <span class="nv">$self</span><span class="o">-&gt;</span><span class="n">rm_prefix</span><span class="p">(</span><span class="nv">$self</span><span class="o">-&gt;</span><span class="n">regex</span><span class="p">,</span> <span class="nv">$msg</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">unless</span> <span class="nv">$msg</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nv">$msg</span> <span class="o">=</span> <span class="nv">$self</span><span class="o">-&gt;</span><span class="n">prefix</span> <span class="o">.</span> <span class="nv">$msg</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$self</span><span class="o">-&gt;</span><span class="n">uri</span><span class="o">-&gt;</span><span class="n">query_form</span><span class="p">(</span><span class="n">s</span> <span class="o">=&gt;</span> <span class="nv">$msg</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">my</span> <span class="nv">$guard</span><span class="p">;</span> <span class="nv">$guard</span> <span class="o">=</span> <span class="n">http_get</span> <span class="nv">$self</span><span class="o">-&gt;</span><span class="n">uri</span><span class="p">,</span> <span class="k">sub </span><span class="p">{</span>
+</span><span class='line'>        <span class="nb">undef</span> <span class="nv">$guard</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">my</span> <span class="p">(</span><span class="nv">$body</span><span class="p">,</span> <span class="nv">$headers</span><span class="p">)</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="nv">$headers</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">Status</span><span class="p">}</span> <span class="o">=~</span> <span class="sr">m/^2/</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">my</span> <span class="nv">$scalar</span> <span class="o">=</span> <span class="nn">JSON::</span><span class="n">from_json</span><span class="p">(</span><span class="nv">$body</span><span class="p">);</span>
+</span><span class='line'>            <span class="k">my</span> <span class="nv">@eval</span><span class="p">;</span>
+</span><span class='line'>            <span class="nb">map</span> <span class="p">{</span> <span class="nb">push</span> <span class="nv">@eval</span><span class="p">,</span> <span class="s">&quot;$_: $scalar-&gt;{$_}&quot;</span> <span class="p">}</span> <span class="sx">qw/lang status stderr stdout syscalls time/</span><span class="p">;</span>
+</span><span class='line'>            <span class="nv">$self</span><span class="o">-&gt;</span><span class="n">to_channel</span><span class="p">(</span><span class="nv">$cl</span><span class="p">,</span> <span class="nv">$channel</span><span class="p">,</span> <span class="nv">@eval</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nv">$self</span><span class="o">-&gt;</span><span class="n">to_channel</span><span class="p">(</span><span class="nv">$cl</span><span class="p">,</span> <span class="nv">$channel</span><span class="p">,</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s">&quot;httpCode: %d&quot;</span><span class="p">,</span> <span class="nv">$headers</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">Status</span><span class="p">}));</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">__PACKAGE__</span><span class="o">-&gt;</span><span class="n">meta</span><span class="o">-&gt;</span><span class="n">make_immutable</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="mi">1</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>hubot eval.coffee</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="c1"># evaluate code.</span>
+</span><span class='line'><span class="c1">#</span>
+</span><span class='line'><span class="c1"># eval me &lt;lang&gt; &lt;code&gt; - evaluate &lt;code&gt; and show the result.</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">module.exports = </span><span class="nf">(robot) -&gt;</span>
+</span><span class='line'>  <span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="sr">/eval( me)? ([^ ]+) (.+)/i</span><span class="p">,</span> <span class="nf">(msg) -&gt;</span>
+</span><span class='line'>    <span class="nx">msg</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">http</span><span class="p">(</span><span class="s2">&quot;http://api.dan.co.jp/lleval.cgi&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nv">s: </span><span class="s2">&quot;#!/usr/bin/#{msg.match[2]}\n#{msg.match[3]}&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">get</span><span class="p">()</span> <span class="nf">(err, res, body) -&gt;</span>
+</span><span class='line'>        <span class="nv">out = </span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
+</span><span class='line'>        <span class="nx">msg</span><span class="p">.</span><span class="nx">send</span> <span class="k">if</span> <span class="nx">out</span><span class="p">.</span><span class="nx">stderr</span> <span class="k">then</span> <span class="nx">out</span><span class="p">.</span><span class="nx">stderr</span> <span class="k">else</span> <span class="nx">out</span><span class="p">.</span><span class="nx">stdout</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>네 <a href="https://github.com/github/hubot">hubot</a> 이 훨씬 단순합니다.
+core 의 설계가 더 유연하고 잘되어 있어서 그렇다고 생각합니다.
+<a href="https://github.com/aanoaa/Hongbot">Hongbot</a>은 저혼자 하고 <a href="https://github.com/github/hubot">hubot</a>은 세계의 여러 해커들이
+참여하는 프로젝트니까 뭐 비교하면 저만
+초라해집니다. <a href="https://github.com/aanoaa/Hongbot">Hongbot</a>의 core 를 업그레이드 시켜서
+<a href="https://github.com/github/hubot">hubot</a> 만큼 단순하게 plugin 을 작성할 수 있게 하면 좋은 plugin
+들이 많이 생겨날 것으로 생각합니다. repo 와 deploy 디렉토리를 따로
+둘수 있게 만든 점 또한 <a href="https://github.com/github/hubot">hubot</a>++ 입니다. 배울게 참 많습니다.</p>
+
+<h2>결론</h2>
+
+<p>여보 아버님채널에 bot 한마리 놔드려야 겠어요</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="http://theprogrammingbutler.com/blog/archives/2011/10/28/hubot-scripts-explained/">hubot Scripts Explained</a></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Hyungsuk Hong</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-21T10:06:00+09:00" pubdate data-updated="true">Feb 21<span>st</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/anyevent/'>AnyEvent</a>, <a class='category' href='/blog/categories/coffeescript-/'>CoffeeScript,</a>, <a class='category' href='/blog/categories/hongbot-/'>hongbot,</a>, <a class='category' href='/blog/categories/hubot-/'>hubot,</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://silexkr.github.com/blog/2012/02/21/irc-bot/" data-via="" data-counturl="http://silexkr.github.com/blog/2012/02/21/irc-bot/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/02/19/guest-speech-number-1/" title="Previous Post: Guest Speech #1 - G사 S님">&laquo; Guest Speech #1 - G사 S님</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/02/21/irc-bot/">IRC bot</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/19/guest-speech-number-1/">Guest Speech #1 - G사 S님</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/17/backbone-dot-js/">backbone.js</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/03/mysql-enum-and-test-star/">Mysql ENUM and Test::*</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/01/silex-techtalk-02-01-2012/">Silex Techtalk - 02/01 - 2012</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Silex -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'silexblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://silexkr.github.com/blog/2012/02/21/irc-bot/';
+        var disqus_url = 'http://silexkr.github.com/blog/2012/02/21/irc-bot/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
